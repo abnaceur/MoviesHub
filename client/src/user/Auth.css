@@ -1,0 +1,11 @@
+.login_block{
+    display: block;
+    position: relative;
+    background-color: antiquewhite;
+    margin-top: 110px;
+    width: 65em;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40em;
+    border-radius: 25px;
+}
