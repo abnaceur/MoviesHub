@@ -93,6 +93,10 @@ input {
   z-index: 3;
 }
 
+.overlay-container:hover {
+  cursor: pointer;
+}
+
 .container.right-panel-active .overlay-container {
   transform: translateX(-100%);
   left: 20%;

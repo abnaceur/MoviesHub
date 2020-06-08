@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
 
 body {
-  background: #252526!important;
+  background: #252526 !important;
   display: block;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  color: #f6f5f7!important;
-  font-family: "Orbitron", sans-serif!important;
+  color: #f6f5f7 !important;
+  font-family: "Orbitron", sans-serif !important;
 }
 h1 {
   font-family: "Press Start 2P", cursive;
@@ -41,7 +41,7 @@ p {
 
 button {
   border-radius: 20px;
-  border: 1px solid #2f808b;
+  border: 3px solid #2f808b;
   background-color: #2f808b;
   color: #ffffff;
   font-size: 12px;
@@ -64,4 +64,11 @@ button:focus {
 button.ghost {
   background-color: transparent;
   border-color: #ffffff;
+}
+
+button:hover {
+  border: 3px solid #2f808b;
+  background-color: white;
+  color: #2f808b;
+  cursor: pointer;
 }
