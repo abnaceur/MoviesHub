@@ -1,5 +1,6 @@
 import React from "react";
 import MainNavigation from "./shared/Navigation/MainNavigation";
+import Footer from "./shared/Footer/Footer";
 import Auth from "./user/Auth";
 import Movies from "./movies/Movies";
 import {
@@ -23,6 +24,7 @@ const App = () => {
           </Route>
           <Redirect to="/" />
         </Switch>
+        <Footer />
       </Router>
     </React.Fragment>
   );

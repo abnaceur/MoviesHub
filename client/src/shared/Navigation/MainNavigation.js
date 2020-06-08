@@ -29,26 +29,10 @@ const MainNavigation = (props) => {
       {drawerIsOpen && <BackDrop onClick={CloseDrawerHandler} />}
       <SideDrawer show={drawerIsOpen} onClick={CloseDrawerHandler}>
         <nav className="main-navigation__drawer-nav">
-          <NavLinks notifNumber={props.notifNumber} />
+          <NavLinks />
         </nav>
       </SideDrawer>
       <MainHeader>
-        Fr
-        <Switch
-          checked={state.checkedA}
-          onChange={handleChange}
-          name="checkedA"
-          inputProps={{ "aria-label": "secondary checkbox" }}
-        />
-        En
-        <button
-          className="main-navigation__menu-btn"
-          onClick={OpenDrawerHandler}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
         <h1 className="main-navigation__title">
           <Link to="/">
             <img className="logo" src={hyperLogo} alt="Hyper logo" />
@@ -57,6 +41,18 @@ const MainNavigation = (props) => {
         <nav className="main-navigation__header-nav">
           <NavLinks />
         </nav>
+
+        <Switch
+          checked={state.checkedA}
+          onChange={handleChange}
+          name="checkedA"
+          inputProps={{ "aria-label": "secondary checkbox" }}
+        />
+
+        <button
+          className="main-navigation__menu-btn"
+          onClick={OpenDrawerHandler}
+        ></button>
       </MainHeader>
     </React.Fragment>
   );
