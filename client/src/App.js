@@ -3,6 +3,9 @@ import MainNavigation from "./shared/Navigation/MainNavigation";
 import Footer from "./shared/Footer/Footer";
 import Auth from "./user/Auth";
 import Movies from "./movies/Movies";
+import UnknowPassword from "./user/forgotPassword/UnknowPassword";
+import ResetPassword from "./user/forgotPassword/ResetPassword";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -21,6 +24,12 @@ const App = () => {
           </Route>
           <Route path="/movies" exact>
             <Movies />
+          </Route>
+          <Route path="/unknowPassword" exact>
+            <UnknowPassword />
+          </Route>
+          <Route path="/resetPassword" exact>
+            <ResetPassword />
           </Route>
           <Redirect to="/" />
         </Switch>
