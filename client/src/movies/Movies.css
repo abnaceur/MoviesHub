@@ -1,0 +1,17 @@
+.movies_container {
+  display: block;
+  width: 95%;
+  margin: 10px auto;
+  background-color: gainsboro;
+  background-color: #252526;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.filter_container {
+  display: block;
+  width: 95%;
+  margin: 90px auto;
+  margin-bottom: 0px;
+  background-color: #252526;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+}

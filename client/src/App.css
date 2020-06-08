@@ -2,14 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
 
 body {
-  background: #252526;
+  background: #252526!important;
   display: block;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  color: #f6f5f7;
-  font-family: "Orbitron", sans-serif;
+  color: #f6f5f7!important;
+  font-family: "Orbitron", sans-serif!important;
 }
 h1 {
   font-family: "Press Start 2P", cursive;
