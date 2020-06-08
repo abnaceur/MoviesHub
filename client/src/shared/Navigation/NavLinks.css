@@ -22,9 +22,11 @@ span.material-icons.MuiIcon-root.navBouton {
 span.material-icons.MuiIcon-root.navBouton:hover {
   color: lightgrey;
 }
+
 .notification-container {
   margin-top: 80px !important;
 }
+
 .nav-links {
   list-style: none;
   margin: 0;

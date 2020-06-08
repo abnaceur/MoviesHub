@@ -10,17 +10,14 @@
   cursor: pointer;
 }
 
-img.logo {
+.logo {
   display: block;
-<<<<<<< HEAD
   width: 260px;
   height: 115px;
-=======
   margin-left: 110px;
   margin-right: auto;
   width: 150px;
   height: 100px;
->>>>>>> feb0e8a29138768e5eac0be4c3638e7985e8fad4
 }
 
 .main-navigation__menu-btn span {
@@ -41,11 +38,8 @@ img.logo {
 
 .main-navigation__header-nav {
   display: none;
-<<<<<<< HEAD
   position: absolute;
   right: 110px;
-=======
->>>>>>> feb0e8a29138768e5eac0be4c3638e7985e8fad4
 }
 
 .main-navigation__drawer-nav {
@@ -92,6 +86,7 @@ h2:hover {
 
 .MuiSwitch-colorSecondary.Mui-checked {
   color: lightgray !important;
+}
 
 button.loupe {
   margin-right: 250px;

@@ -77,7 +77,9 @@ const Auth = () => {
               </div>
               <input type="text" placeholder="Username" />
               <input type="password" placeholder="Password" />
-              <a href="./">Forgot your password?</a>
+              <a className="forgotLink" href="./">
+                Forgot your password?
+              </a>
               <button>Sign In</button>
             </form>
           </div>
