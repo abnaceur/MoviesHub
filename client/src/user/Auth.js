@@ -28,14 +28,14 @@ const Auth = () => {
                   src={LogoFacebook}
                   className="icon"
                   alt="login with facebook"
-                ></img>
+                />
               </a>
               <a href="./" className="social">
                 <img
                   src={Logo42}
                   className="icon"
                   alt="login with facebook"
-                ></img>
+                />
               </a>
             </div>
             <input type="text" placeholder="Username" />
@@ -64,14 +64,14 @@ const Auth = () => {
                   src={LogoFacebook}
                   className="icon"
                   alt="login with facebook"
-                ></img>
+                />
               </a>
               <a href="./" className="social">
                 <img
                   src={Logo42}
                   className="icon"
                   alt="login with facebook"
-                ></img>
+                />
               </a>
             </div>
             <input type="text" placeholder="Username" />
@@ -81,28 +81,12 @@ const Auth = () => {
           </form>
         </div>
         <div className="overlay-container">
-          <div className="overlay">
+          <div className="overlay" onClick={switchModeHandler}>
             <div className="overlay-panel overlay-left">
-              Switch to Sign In
-              <br />
-              <br />
-              <img
-                src={RightArrow}
-                alt="switchArrow"
-                width="150px"
-                onClick={switchModeHandler}
-              />
+              <img src={RightArrow} alt="switchArrow" width="150px" height="900px" />
             </div>
             <div className="overlay-panel overlay-right">
-              Switch to Sign Up
-              <br />
-              <br />
-              <img
-                src={LeftArrow}
-                alt="switchArrow"
-                width="150px"
-                onClick={switchModeHandler}
-              />
+              <img src={LeftArrow} alt="switchArrow" width="150px" height="900px"/>
             </div>
           </div>
         </div>

@@ -1,73 +1,67 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
-* {
-	box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
 
 body {
-	background: #252526;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+  background: #252526;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 100vh;
   color: #f6f5f7;
-  margin: -20px 0 50px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
 }
 h1 {
-	font-family: 'Press Start 2P', cursive;
-	font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  font-weight: bold;
   margin: 0;
-	text-align: center;
+  text-align: center;
 }
 
 h2 {
-	text-align: center;
+  text-align: center;
 }
 
 a {
-	color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
-  font-family: 'Orbitron', sans-serif;
-	text-decoration: none;
-	margin: 15px 0;
+  font-family: "Orbitron", sans-serif;
+  text-decoration: none;
+  margin: 15px 0;
 }
 
 p {
-	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
   letter-spacing: 0.5px;
-  font-family: 'Orbitron', sans-serif;
-	margin: 20px 0 30px;
+  font-family: "Orbitron", sans-serif;
+  margin: 20px 0 30px;
 }
 
 button {
-	border-radius: 20px;
-	border: 1px solid #2F808B;
-	background-color: #2F808B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
+  border-radius: 20px;
+  border: 1px solid #2f808b;
+  background-color: #2f808b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
   letter-spacing: 1px;
-  font-family: 'Orbitron', sans-serif;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+  font-family: "Orbitron", sans-serif;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
 }
 
 button:active {
-	transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 button:focus {
-	outline: none;
+  outline: none;
 }
 
 button.ghost {
-	background-color: transparent;
-	border-color: #FFFFFF;
+  background-color: transparent;
+  border-color: #ffffff;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import MainNavigation from "./shared/Navigation/MainNavigation";
 import Auth from "./user/Auth";
+import Movies from "./movies/Movies";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +17,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact>
             <Auth />
+          </Route>
+          <Route path="/movies" exact>
+            <Movies />
           </Route>
           <Redirect to="/" />
         </Switch>

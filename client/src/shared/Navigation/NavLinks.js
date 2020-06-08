@@ -7,18 +7,18 @@ const NavLinks = (props) => {
   return (
     <ul className="nav-links">
       <li>
-        <NavLink to="/movie" exact>
-          <Icon className="navBouton">movie</Icon>
+        <NavLink to="/movies" exact>
+          <h2>Movies</h2>
         </NavLink>
       </li>
       <li>
         <NavLink to="/serie">
-          <Icon className="navBouton">MovieFilter</Icon>
+          <h2>Series</h2>
         </NavLink>
       </li>
       <li>
         <NavLink to="/favorite">
-          <Icon className="navBouton">Favorite</Icon>
+          <h2>favorite</h2>
         </NavLink>
       </li>
       <li>
