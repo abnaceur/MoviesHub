@@ -3,6 +3,11 @@ import MainNavigation from "./shared/Navigation/MainNavigation";
 import Footer from "./shared/Footer/Footer";
 import Auth from "./user/Auth";
 import Movies from "./movies/Movies";
+import UnknowPassword from "./user/forgotPassword/UnknowPassword";
+import ResetPassword from "./user/forgotPassword/ResetPassword";
+import UpdateProfile from "./user/profil/UpdateProfile";
+import UserProfile from "./user/profil/UserProfile";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -21,6 +26,18 @@ const App = () => {
           </Route>
           <Route path="/movies" exact>
             <Movies />
+          </Route>
+          <Route path="/unknowPassword" exact>
+            <UnknowPassword />
+          </Route>
+          <Route path="/resetPassword" exact>
+            <ResetPassword />
+          </Route>
+          <Route path="/updateProfile" exact>
+            <UpdateProfile />
+          </Route>
+          <Route path="/userProfile" exact>
+            <UserProfile />
           </Route>
           <Redirect to="/" />
         </Switch>
