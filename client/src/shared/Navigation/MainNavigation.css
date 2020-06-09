@@ -12,12 +12,9 @@
 
 .logo {
   display: block;
-  width: 260px;
-  height: 115px;
-  margin-left: 110px;
-  margin-right: auto;
-  width: 150px;
-  height: 100px;
+  width: 90px;
+  height: 60px;
+  margin-left: 30px;
 }
 
 .main-navigation__menu-btn span {

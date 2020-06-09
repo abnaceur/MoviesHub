@@ -10,11 +10,36 @@
     width: 140px;
     height: 200px;
     margin: 5px auto;
+    z-index: 1;
+}
+
+.movie_info{
+    display: none;
+    width: 140px;
+    height: 200px;
+    margin: 5px auto;
+    position: absolute;
+    z-index: 2;
+    background-color: black;
+}
+.movie_info:hover {
+    display: block!important;
+}
+
+.movie_img:hover{
+    cursor: pointer;
+    filter: blur(3px);
 }
 
 .movie_title{
     display: flex;
-    height: 85px;
+    height: 35px;
     width: 140px;
     margin: 5px auto;
+}
+
+.movie_year{
+    position: relative;
+    float: right;
+    margin-right: 15px;
 }
