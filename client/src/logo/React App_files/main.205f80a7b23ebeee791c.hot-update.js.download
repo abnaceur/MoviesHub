@@ -1,0 +1,22 @@
+webpackHotUpdate("main",{
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./src/css/Devis.css":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-3-1!./node_modules/postcss-loader/src??postcss!./src/css/Devis.css ***!
+  \******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".Devis {\r\n    display: block;\r\n    position: absolute;\r\n    width: 100%;\r\n    margin-top: 5em;\r\n\r\n}\r\n\r\n\r\n\r\n.switcher_button{\r\n    display: block;\r\n}\r\n\r\n.mainP {\r\n    font-size: 25px!important;\r\n}\r\n\r\n.center_element {\r\n    width: 100px;\r\n    margin: 0 auto\r\n}\r\n\r\n.select_devis {\r\n    width: 10%;\r\n    float: left;\r\n    height: 500px;\r\n    margin-left: 2em;\r\n}\r\n.selectItem{\r\n    background-color: #a7774a;\r\n    border: 3px solid #292929;\r\n    border-radius: 5px;\r\n    margin: 2px auto;\r\n    height: 40px;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}\r\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ })
+
+})
+//# sourceMappingURL=main.205f80a7b23ebeee791c.hot-update.js.map

@@ -6,11 +6,10 @@
     background-color: #252526;
 }
 
-.movie_img{
+.movie_img img{
     width: 140px;
     height: 200px;
     margin: 5px auto;
-    z-index: 1;
 }
 
 .movie_info{
@@ -20,15 +19,11 @@
     margin: 5px auto;
     position: absolute;
     z-index: 2;
-    background-color: black;
-}
-.movie_info:hover {
-    display: block!important;
-}
-
-.movie_img:hover{
     cursor: pointer;
-    filter: blur(3px);
+    background-color: rgba(0, 0, 0, .7);
+}
+.movie_item:hover .movie_info{
+    display: block;
 }
 
 .movie_title{

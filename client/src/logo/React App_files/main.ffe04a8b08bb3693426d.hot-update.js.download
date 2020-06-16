@@ -1,0 +1,211 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/containers/Devis.js":
+/*!*********************************!*\
+  !*** ./src/containers/Devis.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _containers_InfoDevis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../containers/InfoDevis */ "./src/containers/InfoDevis.js");
+/* harmony import */ var _DetailDevis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DetailDevis */ "./src/containers/DetailDevis.js");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/index.js");
+/* harmony import */ var _css_Devis_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../css/Devis.css */ "./src/css/Devis.css");
+/* harmony import */ var _css_Devis_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_css_Devis_css__WEBPACK_IMPORTED_MODULE_6__);
+var _jsxFileName = "C:\\Users\\root\\Desktop\\test_technique_hemea\\src\\containers\\Devis.js";
+
+
+
+
+
+
+
+
+const Devis = () => {
+  const [selectedId, setSelectedId] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [data, setData] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const [list, setList] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
+  const [selectedItem, setselectedItem] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
+  const [buttonState, setButtonState] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  const handleChange = () => {
+    if (buttonState) {
+      setButtonState(false);
+      setList(data.locations);
+    } else {
+      setButtonState(true);
+      setList(data.lots);
+    }
+
+    setSelectedId(false);
+  };
+
+  const handleChangeDetail = event => {
+    if (buttonState) {
+      setselectedItem(data.lots[event.target.id].lignes);
+    } else if (+event.target.id !== 0) {
+      const tab = [];
+      data.lots.map(lot => {
+        return lot.lignes.map(item => {
+          if (item.locations[0]) {
+            item.locations.map(e => {
+              if (e.uuid === event.target.id) {
+                tab.push(item);
+              }
+
+              return 0;
+            });
+          }
+
+          return 0;
+        });
+      });
+      setselectedItem(tab);
+    } else {
+      const tab = [];
+      data.lots.map(lot => {
+        return lot.lignes.map(item => {
+          if (!item.locations[0]) {
+            tab.push(item);
+          }
+
+          return 0;
+        });
+      });
+      setselectedItem(tab);
+    }
+
+    if (selectedId) {
+      document.getElementById(selectedId).style.backgroundColor = "#a7774a";
+    }
+
+    setSelectedId(event.target.id);
+    document.getElementById(event.target.id).style.backgroundColor = "white";
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://api.travauxlib.com/api/devis-pro/JKusHl8Ba8MABIjdCtLZOe2lxxnUfX").then(response => {
+      setData(response.data);
+      setList(response.data.locations);
+    }).catch(err => console.log(err));
+  }, []);
+
+  if (!data) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      __self: undefined,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 80,
+        columnNumber: 12
+      }
+    }, "LOADING");
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Devis",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84,
+      columnNumber: 5
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_InfoDevis__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    data: data,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85,
+      columnNumber: 7
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "center_element",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86,
+      columnNumber: 7
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["Form"].Check, {
+    type: "switch",
+    id: "custom-switch",
+    label: "Check this switch",
+    onClick: handleChange,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87,
+      columnNumber: 9
+    }
+  })), list && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "select_devis",
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95,
+      columnNumber: 9
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96,
+      columnNumber: 11
+    }
+  }, buttonState && list.map((e, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: i,
+    key: e.uuid,
+    className: "selectItem",
+    onClick: handleChangeDetail,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99,
+      columnNumber: 17
+    }
+  }, e.label)), !buttonState && list.map((e, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: e.uuid,
+    key: e.uuid,
+    className: "selectItem",
+    onClick: handleChangeDetail,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110,
+      columnNumber: 17
+    }
+  }, e.label)), !buttonState && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: 0,
+    key: 0,
+    className: "selectItem",
+    onClick: handleChangeDetail,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 120,
+      columnNumber: 15
+    }
+  }, "OTHER"))), console.log(selectedItem), selectedItem && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DetailDevis__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    items: selectedItem,
+    __self: undefined,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 133,
+      columnNumber: 24
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Devis);
+
+/***/ })
+
+})
+//# sourceMappingURL=main.ffe04a8b08bb3693426d.hot-update.js.map
