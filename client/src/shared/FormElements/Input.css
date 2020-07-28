@@ -1,0 +1,84 @@
+.modal-body {
+  text-align: center;
+}
+.form-control {
+  width: 350px;
+  /* height: auto; */
+  font: inherit;
+  border: 0px;
+  text-align: center;
+  padding: 0.15rem 0.25rem;
+  margin-bottom: 33px;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+  /* margin-bottom: 1em; */
+}
+
+.form-control label {
+  font-weight: bold;
+}
+
+.form-control input,
+.form-control textarea {
+  width: 350px;
+  font: inherit;
+  border: 1px solid #cccccc42;
+  background: #f8f8f8;
+  padding: 0.15rem 0.25rem;
+  color: #2f808b;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  outline: none;
+  background: #ebebeb;
+  border-color: #2f808b;
+}
+
+.form-control--invalid label,
+.form-control--invalid p {
+  color: #2f808b;
+}
+
+.form-control--invalid input,
+.form-control--invalid textarea {
+  border-color: #2f808b;
+  background: #ffd1d1;
+  width: 350px;
+  font: inherit;
+  /* border: 1px solid #cccccc42; */
+  /* background: #f8f8f8; */
+
+  font: inherit;
+  padding: 0.15rem 0.25rem;
+  color: #2f808b;
+}
+
+.form-control.form-control--invalid {
+  width: 350px;
+}
+
+/* p {
+    text-align: justify;
+    margin-left: -80px;
+    margin-right: -80px;
+} */
+p {
+  text-align: justify;
+
+  margin: 0 auto;
+}
+
+.form-control.false {
+  width: 350px;
+  margin-top: 33px;
+}
+
+.InputForm__LogIn {
+  margin: 0 auto;
+  text-align: center;
+}

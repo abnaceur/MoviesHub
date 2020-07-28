@@ -33,7 +33,7 @@ const App = () => {
           <Route path="/resetPassword" exact>
             <ResetPassword />
           </Route>
-          <Route path="/updateProfile" exact>
+          <Route path="/profil" exact>
             <UpdateProfile />
           </Route>
           <Route path="/userProfile" exact>

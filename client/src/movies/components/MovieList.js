@@ -17,6 +17,8 @@ const MovieList = (props) => {
         {props.movies.map((movie, i) => {
           if (i < moviesLoaded) {
             return <MovieItem key={movie.id} movie={movie} />;
+          } else {
+            return null;
           }
         })}
       </ReactScrollWheelHandler>
