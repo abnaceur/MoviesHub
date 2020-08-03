@@ -3,8 +3,11 @@ import "./MovieItem.css";
 import "../../App.css";
 
 const MovieItem = (props) => {
+  const redirectMovie = () => {
+    // window.location = "http://localhost:3000/lector";
+  };
   return (
-    <div className="movie_item" key={props.movie.id}>
+    <div className="movie_item" key={props.movie.id} onClick={redirectMovie()}>
       <div className="movie_info">337</div>
       <div className="movie_img">
         <img src={props.movie.coverImage} alt={props.movie.name} />
