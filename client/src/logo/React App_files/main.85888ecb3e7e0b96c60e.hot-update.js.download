@@ -1,0 +1,22 @@
+webpackHotUpdate("main",{
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./src/css/DetailDevis.css":
+/*!************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-3-1!./node_modules/postcss-loader/src??postcss!./src/css/DetailDevis.css ***!
+  \************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".detail_devis{\r\n    display: block;\r\n    position: relative;\r\n    width: 25em;\r\n    height: 500px;\r\n    margin-left: 15em;\r\n    border-radius: 2;\r\n\r\n}\r\n\r\n.item_devis {\r\n    background-color: #a7774a;\r\n    border: 3px solid #292929;\r\n    border-radius: 5px;\r\n    margin: 2px auto;\r\n    height: 60px;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}\r\n\r\n.detail_item{\r\n    display: block;\r\n    position: relative;\r\n    background-color: blue;\r\n    width: 40em;\r\n    height: 500px;\r\n    margin-right: 3em;\r\n\r\n\r\n}\r\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ })
+
+})
+//# sourceMappingURL=main.85888ecb3e7e0b96c60e.hot-update.js.map

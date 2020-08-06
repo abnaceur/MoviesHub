@@ -1,0 +1,13 @@
+.filterMenu {
+  width: 100%;
+  margin: 0 auto;
+}
+.filterElement {
+  width: 110px;
+  margin: 0 auto;
+}
+.filterItem {
+  width: 182px;
+  margin: 0 auto;
+  display: block;
+}

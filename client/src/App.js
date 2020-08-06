@@ -7,6 +7,7 @@ import UnknowPassword from "./user/forgotPassword/UnknowPassword";
 import ResetPassword from "./user/forgotPassword/ResetPassword";
 import UpdateProfile from "./user/profil/UpdateProfile";
 import UserProfile from "./user/profil/UserProfile";
+import Lector from "./movies/components/Lector";
 
 import {
   BrowserRouter as Router,
@@ -33,11 +34,14 @@ const App = () => {
           <Route path="/resetPassword" exact>
             <ResetPassword />
           </Route>
-          <Route path="/updateProfile" exact>
+          <Route path="/profil" exact>
             <UpdateProfile />
           </Route>
           <Route path="/userProfile" exact>
             <UserProfile />
+          </Route>
+          <Route path="/lector" exact>
+            <Lector />
           </Route>
           <Redirect to="/" />
         </Switch>

@@ -1,0 +1,11 @@
+button.notif_number:hover{
+color: pink;   
+
+}
+
+button.notif_number{
+color: pink;   
+position: absolute;
+width: 20px ;
+height: 20px;
+}
