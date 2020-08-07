@@ -13,6 +13,6 @@ const app = express();
 
 app.use(router);
 // app.use("/api/user", userRoutes);
-app.use("/api/user/:uid/movies/:moviesid/comments", commentRoutes);
+app.use("/api/comments", commentRoutes);
 
 app.listen(5001);
