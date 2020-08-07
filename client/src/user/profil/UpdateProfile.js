@@ -1,69 +1,59 @@
 import React from "react";
-import Input from "../../shared/FormElements/Input";
-import { useForm } from "../../shared/hooks/form-hook";
-import {
-  VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH,
-  VALIDATOR_EMAIL,
-} from "../../shared/util/validators";
-import "./UpdateProfile.css";
+import "../Auth.css";
 import "../../App.css";
-import ImageUpload from "../../shared/FormElements/ImageUpload";
+import "./Profile.css";
+import Icon from "@material-ui/core/Icon";
 
-const UpdateProfile = (props) => {
-  const [formState, inputHandler] = useForm(
-    {
-      picture: {
-        value: null,
-        isValid: false,
-      },
-      email: {
-        value: "",
-        isValid: false,
-      },
-    },
-    false
-  );
-  const updateSubmitHandler = () => {
-    console.log(formState.isValid);
+const UpdateProfile = () => {
+  const profile = {
+    username: "Melchior",
+    lastname: "Bengtsson",
   };
-  const pictureSubmitHandler = () => {};
   return (
     <React.Fragment>
-      <div className="formUser">
-        <form onSubmit={pictureSubmitHandler}>
-          <ImageUpload
-            center
-            id="picture"
-            onInput={inputHandler}
-            errorText="Provide an Image!"
-          />
-        </form>
-        <Input
-          id="email"
-          element="input"
-          type="mail"
-          validators={[VALIDATOR_EMAIL()]}
-          label="Update Email"
-          errorText="Please enter a valid email"
-          initialValue=""
-          initialValid={false}
-          onInput={inputHandler}
-        />
-        <Input
-          id="username"
-          element="input"
-          type="text"
-          validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(5)]}
-          label="Update Username"
-          errorText="Please enter a valid username"
-          initialValue=""
-          initialValid={false}
-          onInput={inputHandler}
-        />
-        <button onClick={updateSubmitHandler} disabled={!formState.isValid}>
-          Update
-        </button>
+      <div className="container_update">
+        <h1> Update Profile </h1>
+
+        <div className="Update_avatar">
+          <h3>Update avatar</h3>
+          <form className="avatar">
+            <img
+              className="image_avatar"
+              src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
+            />
+            <div>
+              <button className="disketteBouton">
+                <Icon className="savedisket"> save</Icon>
+              </button>
+            </div>
+            <div>
+              <button type="button" className="penBouton">
+                <Icon className="change-image"> create</Icon>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div className="Update_information">
+          <h3>Update information</h3>
+          <form action="#">
+            <input type="email" placeholder="Email" />
+            <input type="text" placeholder={profile.username} />
+            <input type="text" placeholder="Firstname" />
+            <input type="text" placeholder="Lastname" />
+            <button>Update information</button>
+          </form>
+        </div>
+
+        <div className="Update_password">
+          <h3>Update password</h3>
+          <form action="#">
+            <input type="text" placeholder="My Password" />
+            <input type="text" placeholder="My New Password" />
+            <input type="text" placeholder="Repeat Password" />
+            <button>Update Password</button>
+          </form>
+        </div>
       </div>
     </React.Fragment>
   );
