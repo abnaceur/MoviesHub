@@ -10,7 +10,7 @@ const Lector = (props) => {
   return (
     <div className="lector">
       <link rel="stylesheet" href="/css/video-react.css" />
-      Title
+      Titles
       <Player
         playsInline
         poster="/assets/poster.png"
