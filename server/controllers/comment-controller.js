@@ -2,9 +2,10 @@ const express = require("express");
 const commentModel = require("../models/comment-model");
 
 const newComment = (req, res, next) => {
+  console.log("LOL");
   commentModel.postCommentOnMovie((err, result) => {
     if (!err) {
-      return res.status(201).json({ user: result });
+      return res.status(201).json({ comments: result });
     } else {
       return res.status(400).json({ message: err });
     }
@@ -14,7 +15,7 @@ const newComment = (req, res, next) => {
 const getComments = (req, res, next) => {
   commentModel.getCommentsById((err, result) => {
     if (!err) {
-      return res.status(201).json({ user: result });
+      return res.status(201).json({ comments: result });
     } else {
       return res.status(400).json({ message: err });
     }
@@ -24,7 +25,7 @@ const getComments = (req, res, next) => {
 const deleteComment = (req, res, next) => {
   commentModel.deleteCommentsById((err, result) => {
     if (!err) {
-      return res.status(201).json({ user: result });
+      return res.status(201).json({ comments: result });
     } else {
       return res.status(400).json({ message: err });
     }

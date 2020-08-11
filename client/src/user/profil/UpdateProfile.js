@@ -20,6 +20,7 @@ const UpdateProfile = () => {
             <img
               className="image_avatar"
               src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
+              alt="Profile"
             />
             <div>
               <button className="disketteBouton">
