@@ -1,7 +1,7 @@
 import React from "react";
 import "./Commentary.css";
 import "../../../App.css";
-import Input from "../.././../shared/FormElements/Input";
+// import Input from "../.././../shared/FormElements/Input";
 const InsertComment = (props) => {
   return <div className="commentary_insert"></div>;
 };

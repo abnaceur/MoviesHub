@@ -41,12 +41,13 @@ const Commentary = (props) => {
       await sendRequest(
         `http://localhost:5000/api/comments/3/3`,
         "POST",
-        {
-          "Content-Type": "application/json",
-        },
+
         JSON.stringify({
           comment: formState.inputs.comment.value,
-        })
+        }),
+        {
+          "Content-Type": "application/json",
+        }
       );
       console.log(formState.inputs.comment.value);
     } catch (err) {}

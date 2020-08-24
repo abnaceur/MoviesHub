@@ -2,7 +2,6 @@ const express = require("express");
 const commentModel = require("../models/comment-model");
 
 const newComment = (req, res, next) => {
-  console.log("LOL");
   commentModel.postCommentOnMovie((err, result) => {
     if (!err) {
       return res.status(201).json({ comments: result });

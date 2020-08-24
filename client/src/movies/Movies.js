@@ -1,6 +1,7 @@
 import React from "react";
 import Filter from "./components/Filter";
-import MovieList from "./components/MovieList";
+// import MovieList from "./components/MovieList";
+// import queryString from "query-string";
 import "./Movies.css";
 import "../App.css";
 
@@ -407,15 +408,17 @@ const fakeMovies = [
   },
 ];
 
-const Movies = () => {
+const Movies = ({ location }) => {
+  console.log(location);
+  // console.log(queryString.parse(location));
   return (
     <div className="movies_pages_container">
       <div className="filter_container">
-        <Filter />
+        <Filter movies={fakeMovies} />
       </div>
-      <div className="movies_container">
+      {/* <div className="movies_container">
         <MovieList movies={fakeMovies} />
-      </div>
+      </div> */}
     </div>
   );
 };
