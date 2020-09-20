@@ -71,11 +71,11 @@ const Filter = (props) => {
               </button>
               <button
                 className="filterItem"
-                id="Policier"
+                id="Adventure"
                 onClick={developCategory}
               >
                 {" "}
-                Policier{" "}
+                Adventure{" "}
               </button>
               <button
                 className="filterItem"
@@ -84,6 +84,14 @@ const Filter = (props) => {
               >
                 {" "}
                 Horreur{" "}
+              </button>
+              <button
+                className="filterItem"
+                id="Drama"
+                onClick={developCategory}
+              >
+                {" "}
+                Drama{" "}
               </button>
               <button className="filterItem" id="All" onClick={developCategory}>
                 {" "}
