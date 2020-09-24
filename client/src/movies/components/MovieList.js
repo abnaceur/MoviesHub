@@ -8,7 +8,9 @@ import "../../App.css";
 const MovieList = (props) => {
   return (
     <React.Fragment>
-      {props.movies.id}
+      {props.movies.map((movie) => {
+        return (<MovieItem movie={movie} />)
+      })}
     </React.Fragment>
   );
 };

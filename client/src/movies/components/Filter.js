@@ -7,7 +7,7 @@ import "./Filter.css";
 import "../../App.css";
 
 const Filter = (props) => {
-  const [moviesLoaded, setMoviesLoaded] = useState(null);
+  const [moviesLoaded, setMoviesLoaded] = useState(false);
   const [showCategory, setShowCategory] = useState(false);
   const [page, setPage] = useState(1);
   const [rating, setRating] = useState(1);
@@ -15,19 +15,41 @@ const Filter = (props) => {
   const [Category, setCategory] = useState({ id: 0, value: "All" });
   const [CategoryList, setCategoryList] = useState(null);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const fetchMovies = async (rating, Category) => {
+  const fetchMovies = async (reload, categorytmp) => {
     try {
-      const responseData = await sendRequest(
-        `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
-      );
-      if (moviesLoaded) {
-        let tmpMovies = moviesLoaded.results;
-        tmpMovies.push(responseData.results);
-        console.log(tmpMovies);
+      let responseData;
+      if (Category.id === 0 && !categorytmp) {
+        responseData = await sendRequest(
+          `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
+        );
+        console.log("OKOK")
+      } else if (categorytmp === 0) {
+        responseData = await sendRequest(
+          `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${1}`
+        );
+        console.log(page)
+      } else if (categorytmp !== 0 && reload === true) {
+        responseData = await sendRequest(
+          `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${1}&with_genres=${categorytmp}`
+        );
+      } else {
+        responseData = await sendRequest(
+          `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${Category.id}`
+        );
       }
-      setMoviesLoaded(responseData);
-      let tmp = page + 1;
-      setPage(tmp);
+      if (moviesLoaded && reload !== true) {
+        let tmpMovies = moviesLoaded;
+        responseData.results.map((movie) => {
+          tmpMovies.push(movie);
+        })
+        setMoviesLoaded(tmpMovies);
+        let tmp = page + 1;
+        setPage(tmp);
+      } else {
+        setMoviesLoaded(responseData.results);
+        setPage(2);
+      }
+
     } catch (err) { }
   };
   useEffect(() => {
@@ -40,6 +62,7 @@ const Filter = (props) => {
         setCategoryList(responseData.genres);
       } catch (err) { }
     };
+    fetchMovies();
     fetchCategory();
   }, [sendRequest]);
   const ratingChanged = (newRating) => {
@@ -49,7 +72,6 @@ const Filter = (props) => {
     } else {
       setMovies(props.movies.filter((movie) => movie.rating >= newRating));
     }
-    console.log(rating);
   };
   const developCategory = (event) => {
     if (!showCategory) {
@@ -59,12 +81,14 @@ const Filter = (props) => {
       if (rating === 1) {
       } else {
       }
+      fetchMovies(true, event.target.id);
       setShowCategory(false);
     }
   };
 
   const setAll = () => {
     setCategory({ id: 0, value: "All" });
+    fetchMovies(true, 0);
   }
 
   return (
@@ -88,8 +112,9 @@ const Filter = (props) => {
             {Category.value}
           </button>
           {showCategory && CategoryList &&
-            CategoryList.map((Category) => {
+            CategoryList.map((Category, i) => {
               return (<button
+                key={i}
                 className="filterItem"
                 id={Category.id}
                 value={Category.name}
@@ -110,7 +135,6 @@ const Filter = (props) => {
         </div>
       </div>
       <div className="movies_container">
-        <button onClick={fetchMovies}>TMP</button>
         {moviesLoaded && <ReactScrollWheelHandler downHandler={fetchMovies}>
           <MovieList movies={moviesLoaded} />
         </ReactScrollWheelHandler>}
