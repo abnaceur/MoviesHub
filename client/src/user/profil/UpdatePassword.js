@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
+// import ErrorModal from "../../shared/UIElements/ErrorModal";
+// import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
@@ -11,10 +11,10 @@ import Input from "../../shared/FormElements/Input";
 import "../Auth.css";
 import "../../App.css";
 import "./Profile.css";
-import Icon from "@material-ui/core/Icon";
+// import Icon from "@material-ui/core/Icon";
 
 const UpdatePassword = () => {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
       oldpass: {
@@ -35,7 +35,7 @@ const UpdatePassword = () => {
 
   const UpdatePassword = async () => {
     try {
-      const responseData = await sendRequest(
+      await sendRequest(
         `http://localhost:5000/api/user/updatePassword`,
         "POST",
         JSON.stringify({

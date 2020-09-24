@@ -11,10 +11,10 @@ const Filter = (props) => {
   const [showCategory, setShowCategory] = useState(false);
   const [page, setPage] = useState(1);
   const [rating, setRating] = useState(1);
-  const [movies, setMovies] = useState(props.movies);
+  const [setMovies] = useState(props.movies);
   const [Category, setCategory] = useState({ id: 0, value: "All" });
   const [CategoryList, setCategoryList] = useState(null);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { sendRequest } = useHttpClient();
   const fetchMovies = async (reload, categorytmp) => {
     try {
       let responseData;
@@ -22,12 +22,12 @@ const Filter = (props) => {
         responseData = await sendRequest(
           `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         );
-        console.log("OKOK")
+        console.log("OKOK");
       } else if (categorytmp === 0) {
         responseData = await sendRequest(
           `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${1}`
         );
-        console.log(page)
+        console.log(page);
       } else if (categorytmp !== 0 && reload === true) {
         responseData = await sendRequest(
           `https://api.themoviedb.org/3/discover/movie?api_key=03629fbb07a3c96f17fbde76c54e3812&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${1}&with_genres=${categorytmp}`
@@ -41,7 +41,7 @@ const Filter = (props) => {
         let tmpMovies = moviesLoaded;
         responseData.results.map((movie) => {
           tmpMovies.push(movie);
-        })
+        });
         setMoviesLoaded(tmpMovies);
         let tmp = page + 1;
         setPage(tmp);
@@ -49,8 +49,7 @@ const Filter = (props) => {
         setMoviesLoaded(responseData.results);
         setPage(2);
       }
-
-    } catch (err) { }
+    } catch (err) {}
   };
   useEffect(() => {
     const fetchCategory = async () => {
@@ -60,7 +59,7 @@ const Filter = (props) => {
           `
         );
         setCategoryList(responseData.genres);
-      } catch (err) { }
+      } catch (err) {}
     };
     fetchMovies();
     fetchCategory();
@@ -89,7 +88,7 @@ const Filter = (props) => {
   const setAll = () => {
     setCategory({ id: 0, value: "All" });
     fetchMovies(true, 0);
-  }
+  };
 
   return (
     <React.Fragment>
@@ -111,35 +110,34 @@ const Filter = (props) => {
           >
             {Category.value}
           </button>
-          {showCategory && CategoryList &&
+          {showCategory &&
+            CategoryList &&
             CategoryList.map((Category, i) => {
-              return (<button
-                key={i}
-                className="filterItem"
-                id={Category.id}
-                value={Category.name}
-                onClick={developCategory}
-              >
-                {Category.name}
-              </button>)
-            })
-          }
-          <button
-            className="filterItem"
-            id="0"
-            onClick={setAll}
-            value="All"
-          >
+              return (
+                <button
+                  key={i}
+                  className="filterItem"
+                  id={Category.id}
+                  value={Category.name}
+                  onClick={developCategory}
+                >
+                  {Category.name}
+                </button>
+              );
+            })}
+          <button className="filterItem" id="0" onClick={setAll} value="All">
             All
           </button>
         </div>
       </div>
       <div className="movies_container">
-        {moviesLoaded && <ReactScrollWheelHandler downHandler={fetchMovies}>
-          <MovieList movies={moviesLoaded} />
-        </ReactScrollWheelHandler>}
+        {moviesLoaded && (
+          <ReactScrollWheelHandler downHandler={fetchMovies}>
+            <MovieList movies={moviesLoaded} />
+          </ReactScrollWheelHandler>
+        )}
       </div>
-    </React.Fragment >
+    </React.Fragment>
   );
 };
 
