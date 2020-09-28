@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import UpdatePassword from "./UpdatePassword";
-import ErrorModal from "../../shared/UIElements/ErrorModal";
+// import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import {
   VALIDATOR_REQUIRE,
@@ -16,7 +16,7 @@ import Icon from "@material-ui/core/Icon";
 
 const UpdateProfile = () => {
   const [loadedUser, setLoadedUser] = useState();
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, sendRequest } = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
       username: {
