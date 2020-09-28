@@ -16,10 +16,12 @@ const MovieItem = (props) => {
     <div className="movie_item" key={props.movie.id} onClick={redirectMovie}>
       <div className="movie_info">337</div>
       <div className="movie_img">
-        <img src={url} alt={props.movie.name} />
+        {props.movie.Poster && <img src={props.movie.Poster} alt={props.movie.Poster} />}
+        {!props.movie.Poster && <img src={url} alt={props.movie.name} />}
       </div>
 
-      <p className="movie_title">{props.movie.title}</p>
+      <p className="movie_title">{props.movie.title && props.movie.title}</p>
+      <p className="movie_title">{!props.movie.title && props.movie.Title}</p>
       <div className="movie_rating">
         {props.movie.popularity}/5
         <div className="movie_year">{props.movie.year}</div>
