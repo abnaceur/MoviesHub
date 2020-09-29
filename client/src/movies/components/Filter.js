@@ -3,11 +3,26 @@ import ReactStars from "react-rating-stars-component";
 import ReactScrollWheelHandler from "react-scroll-wheel-handler";
 import MovieList from "./MovieList";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { useForm } from "../../shared/hooks/form-hook";
+import Input from "../../shared/FormElements/Input";
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH,
+} from "../../shared/util/validators";
 import "./Filter.css";
 import "../../App.css";
 
 const Filter = (props) => {
   const [moviesLoaded, setMoviesLoaded] = useState(false);
+  const [formState, inputHandler] = useForm(
+    {
+      movie: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
   const [showCategory, setShowCategory] = useState(false);
   const [page, setPage] = useState(1);
   const [rating, setRating] = useState(1);
@@ -50,6 +65,16 @@ const Filter = (props) => {
         setPage(2);
       }
     } catch (err) {}
+  };
+  const fetchSearchMovies = async () => {
+    try {
+      let responseData;
+      responseData = await sendRequest(
+        `http://www.omdbapi.com/?t=${formState.inputs.movie.value}&apikey=851869e0`
+      );
+      console.log(responseData)
+      setMoviesLoaded(responseData)
+    } catch (err) { }
   };
   useEffect(() => {
     const fetchCategory = async () => {
@@ -110,8 +135,13 @@ const Filter = (props) => {
           >
             {Category.value}
           </button>
+<<<<<<< HEAD
+
+          {showCategory && CategoryList &&
+=======
           {showCategory &&
             CategoryList &&
+>>>>>>> a899a3a8d06518f67efde8e47511defa5e150515
             CategoryList.map((Category, i) => {
               return (
                 <button
@@ -129,6 +159,18 @@ const Filter = (props) => {
             All
           </button>
         </div>
+        <Input
+          id="movie"
+          element="input"
+          type="text"
+          validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
+          label="Movie"
+          errorText="Please enter a valid Movie Title. (2 characters min.)"
+          initialValue=""
+          initialValid={false}
+          onInput={inputHandler}
+        />
+        <button onClick={fetchSearchMovies}>SEARCH</button>
       </div>
       <div className="movies_container">
         {moviesLoaded && (
