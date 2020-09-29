@@ -135,13 +135,9 @@ const Filter = (props) => {
           >
             {Category.value}
           </button>
-<<<<<<< HEAD
-
-          {showCategory && CategoryList &&
-=======
+          
           {showCategory &&
             CategoryList &&
->>>>>>> a899a3a8d06518f67efde8e47511defa5e150515
             CategoryList.map((Category, i) => {
               return (
                 <button

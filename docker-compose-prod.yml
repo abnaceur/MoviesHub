@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  server_dev:
+    container_name: hpt_server_dev
+    build: ./server/
+    environment:
+      - VIRTUAL_HOST=si.hpt.local
+    volumes : 
+      - ./server/:/usr/src/app:rw
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  
+  mongo:
+    container_name: hpt_mongo_dev
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+
+  server_dev:
+    image: node:latest
+    container_name: hpt_server_dev
+    volumes:
+      - ./server/:/home/node/app
+    working_dir: /home/node/app
+    command: npm run start-deploy
+    ports:
+        - "80:5000"
