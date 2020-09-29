@@ -64,7 +64,7 @@ const Filter = (props) => {
         setMoviesLoaded(responseData.results);
         setPage(2);
       }
-    } catch (err) {}
+    } catch (err) { }
   };
   const fetchSearchMovies = async () => {
     try {
@@ -84,7 +84,7 @@ const Filter = (props) => {
           `
         );
         setCategoryList(responseData.genres);
-      } catch (err) {}
+      } catch (err) { }
     };
     fetchMovies();
     fetchCategory();
@@ -135,13 +135,8 @@ const Filter = (props) => {
           >
             {Category.value}
           </button>
-<<<<<<< HEAD
 
           {showCategory && CategoryList &&
-=======
-          {showCategory &&
-            CategoryList &&
->>>>>>> a899a3a8d06518f67efde8e47511defa5e150515
             CategoryList.map((Category, i) => {
               return (
                 <button
