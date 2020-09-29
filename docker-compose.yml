@@ -1,20 +1,6 @@
 version: '2'
 
 services:
-
-  version: '2'
-
-networks:
-  mongodb_net:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-      # Change this subnet range if it conflicts with your personal/work network
-        - subnet: 192.168.213.0/24
-          gateway: 192.168.213.1  
-
-services:
   server_dev:
     container_name: hpt_server_dev
     build: ./server/
@@ -40,7 +26,7 @@ services:
   client_dev:
     image: node:latest
     container_name: hpt_client_dev
-    command: npm i && npm start
+    command: npm start
     volumes:
       - ./client/:/home/node/app
     working_dir: /home/node/app
@@ -57,7 +43,5 @@ services:
       - VIRTUAL_HOST=app.hptdb.local
     depends_on:
       - mongo
-    networks:
-      - mongodb_net
     ports:
       - 3300:3000
