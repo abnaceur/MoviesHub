@@ -8,9 +8,14 @@ var db = require('./config/dbConnection');
 var bodyParser = require('body-parser');
 const helmet = require('helmet');
 let mongoose = require('mongoose');
+const swaggerDocument = require('./docs/openApiDocumentation/BasicInformation');
+const swaggerUi = require('swagger-ui-express');
 
 // Main app
 var app = express();
+
+// Display API Docs
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //Use hamlet 
 app.use(helmet())
