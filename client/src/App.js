@@ -1,13 +1,13 @@
 import React from "react";
 import MainNavigation from "./components/shared/Navigation/MainNavigation";
 import Footer from "./components/shared/Footer/Footer";
-import Auth from "./components/user/Auth";
+import Auth from "./components/userClass/Auth";
 import Movies from "./components/movies/Movies";
 import UnknowPassword from "./components/user/forgotPassword/UnknowPassword";
 import ResetPassword from "./components/user/forgotPassword/ResetPassword";
 import UpdateProfile from "./components/user/profil/UpdateProfile";
 import Lector from "./components/movies/components/Lector";
-
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 import {

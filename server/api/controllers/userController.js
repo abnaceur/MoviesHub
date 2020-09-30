@@ -1,7 +1,8 @@
 const creatNewUserService = require('../services/userServices/creatNewUserService');
 
 registerNewUserControl = (req, res, next) => {
-    creatNewUserService.creatNewUserService(req.body, req.files, res);
+    console.log("req :", req.body);
+    creatNewUserService.creatNewUserService(req.body, res);
 }
 
 module.exports = {

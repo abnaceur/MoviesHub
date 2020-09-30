@@ -15,7 +15,7 @@ function userExist(email, pseudonyme) {
     })
 }
 
-async function creatNewUserService(data, files, res) {
+async function creatNewUserService(data, res) {
     try {
         // Check if user exist
         if (await userExist(data.email, data.pseudonyme)) {
@@ -25,7 +25,8 @@ async function creatNewUserService(data, files, res) {
             })
         } else {
             // Created a new account
-            let user = new User(await userClass.creatNewRegisterUser(data, files[0].path))
+            let user = new User(await userClass.creatNewRegisterUser(data))
+    
             user.save()
                 .then(results => {
                     res.status(200).json({

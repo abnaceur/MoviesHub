@@ -24,11 +24,10 @@ creatNewUser = (value) => {
     });
 }
 
-creatNewRegisterUser = (userInfo, image) => {
+creatNewRegisterUser = (userInfo) => {
     return new Promise(async (resolve, reject) => {
         resolve({
             _id: new mongoose.Types.ObjectId,
-            imageUrl: image,
             email: userInfo.email,
             name: userInfo.firstname + " " + userInfo.lastname,
             givenName: userInfo.firstname,

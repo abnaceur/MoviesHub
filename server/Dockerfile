@@ -6,3 +6,4 @@ RUN npm install nodemon -g
 RUN npm install
 EXPOSE 3000
 CMD DEBUG=server:* npm run devstart
+

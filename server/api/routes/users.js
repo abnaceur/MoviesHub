@@ -6,6 +6,6 @@ const upload = require('../middleware/uploadFiles');
 /*
 ** [POST] Route:"/users/signup" [USED]
 */
-router.post('/signup', upload.any(), userController.registerNewUserControl);
+router.post('/register', upload.any(), userController.registerNewUserControl);
 
 module.exports = router;

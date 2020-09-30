@@ -23,8 +23,6 @@ let userSchema = mongoose.Schema({
 	email: {
 		type: String,
 		required: true,
-		unique: true,
-		match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 	},
 	name: {
 		required: true,
@@ -39,6 +37,7 @@ let userSchema = mongoose.Schema({
 		type: String,
 	},
 	password: {
+		required: true,
 		type: String,
 		default: "",
 	},
@@ -50,10 +49,6 @@ let userSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
-	blocked: {
-        type: Boolean,
-        default: false,
-    },
 	dateOfLastUpdate: {
 		type: Date,
 		default: Date.now,

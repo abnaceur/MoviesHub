@@ -16,6 +16,9 @@ import { useForm } from "../shared/hooks/form-hook";
 // import { Input } from "@material-ui/core";
 import Input from "../shared/FormElements/Input";
 
+// Import services
+import { signUpNewUser } from '../shared/services/userServices/registerUserService'
+
 const Auth = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler] = useForm(
@@ -51,28 +54,37 @@ const Auth = () => {
       setLoginMode("right-panel-active");
     }
   };
+  // TODO REFACTOR SERVICES OUT OF COMPOENENT LOGIC
   const fetchUser = async () => {
-    console.log("ok");
-
-    if (loginMode) {
+    console.log("ok", formState.inputs.username);
+    let data = {
+      username: formState.inputs.username.value,
+      firstname: formState.inputs.firstname.value,
+      lastname: formState.inputs.lastname.value,
+      email: formState.inputs.email.value,
+      password: formState.inputs.password.value,
+    };
+    
+    if (loginMode === "left-panel-active") { 
       try {
         await sendRequest(
           `http://localhost:5000/api/user/login`,
           "POST",
 
-          JSON.stringify({
-            username: formState.inputs.username.value,
-            firstname: formState.inputs.firstname.value,
-            lastname: formState.inputs.lastname.value,
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value,
-          }),
+          JSON.stringify(data),
           {
             "Content-Type": "application/json",
           }
         );
-      } catch (err) {}
-    } else {
+      } catch (err) { }
+    } else if (loginMode === "right-panel-active") {
+      let response = await signUpNewUser({
+        username: formState.inputs.username.value,
+        firstname: formState.inputs.firstname.value,
+        lastname: formState.inputs.lastname.value,
+        email: formState.inputs.email.value,
+        password: formState.inputs.password.value,
+      })
     }
   };
 
@@ -102,6 +114,7 @@ const Auth = () => {
               <Input
                 id="Username"
                 placeholder="Username"
+                name="username"
                 element="input"
                 type="text"
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
