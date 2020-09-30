@@ -6,7 +6,7 @@ import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
 import BackDrop from "../UIElements/Backdrop";
 import Switch from "@material-ui/core/Switch";
-import hyperLogo from "../../logo/LogoHyper.png";
+import hyperLogo from '../../../assets/logo/LogoHyper.png';
 import "./MainNavigation.css";
 
 const MainNavigation = (props) => {

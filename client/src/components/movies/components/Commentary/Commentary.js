@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Commentary.css";
 import InsertComment from "./InsertComment";
-import "../../../App.css";
 import { useHttpClient } from "../../../shared/hooks/http-hook";
 import ErrorModal from "../../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../../shared/UIElements/LoadingSpinner";

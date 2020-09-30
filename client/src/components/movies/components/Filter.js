@@ -10,7 +10,7 @@ import {
   VALIDATOR_MINLENGTH,
 } from "../../shared/util/validators";
 import "./Filter.css";
-import "../../App.css";
+
 
 const Filter = (props) => {
   const [moviesLoaded, setMoviesLoaded] = useState(false);

@@ -3,7 +3,7 @@ HYPERTUBE PROJECT
 
 ## Description of the project :
 
-HYPERTUBE is a plateform for video streaming
+HYPERTUBE is a plateform for video streaming.
 
 ## Team 
  --

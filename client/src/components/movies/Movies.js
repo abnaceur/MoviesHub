@@ -3,7 +3,6 @@ import Filter from "./components/Filter";
 // import MovieList from "./components/MovieList";
 // import queryString from "query-string";
 import "./Movies.css";
-import "../App.css";
 
 const Movies = ({ location }) => {
   console.log(location);

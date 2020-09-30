@@ -1,12 +1,14 @@
 import React from "react";
-import MainNavigation from "./shared/Navigation/MainNavigation";
-import Footer from "./shared/Footer/Footer";
-import Auth from "./user/Auth";
-import Movies from "./movies/Movies";
-import UnknowPassword from "./user/forgotPassword/UnknowPassword";
-import ResetPassword from "./user/forgotPassword/ResetPassword";
-import UpdateProfile from "./user/profil/UpdateProfile";
-import Lector from "./movies/components/Lector";
+import MainNavigation from "./components/shared/Navigation/MainNavigation";
+import Footer from "./components/shared/Footer/Footer";
+import Auth from "./components/user/Auth";
+import Movies from "./components/movies/Movies";
+import UnknowPassword from "./components/user/forgotPassword/UnknowPassword";
+import ResetPassword from "./components/user/forgotPassword/ResetPassword";
+import UpdateProfile from "./components/user/profil/UpdateProfile";
+import Lector from "./components/movies/components/Lector";
+
+import './App.css';
 
 import {
   BrowserRouter as Router,

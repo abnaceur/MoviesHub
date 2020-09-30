@@ -51,6 +51,7 @@ app.use((req, res, next) => {
 
 // Routes
 var indexRouter = require('./api/routes/index');
+var usersRouter = require('./api/routes/users');
 
 // Open connection to the database
 db.once('open', function () {
@@ -75,6 +76,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Call routes API
 app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

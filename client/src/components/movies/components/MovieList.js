@@ -6,7 +6,6 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 // import Filter from "./Filter";
 // import { useHttpClient } from "../../shared/hooks/http-hook";
 import "./Filter.css";
-import "../../App.css";
 
 const MovieList = (props) => {
 

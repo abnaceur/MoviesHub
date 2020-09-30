@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./MovieItem.css";
-import "../../App.css";
 
 const MovieItem = (props) => {
   const url =

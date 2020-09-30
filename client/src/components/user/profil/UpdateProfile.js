@@ -10,7 +10,6 @@ import {
 import { useForm } from "../../shared/hooks/form-hook";
 import Input from "../../shared/FormElements/Input";
 import "../Auth.css";
-import "../../App.css";
 import "./Profile.css";
 import Icon from "@material-ui/core/Icon";
 

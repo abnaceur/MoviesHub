@@ -1,10 +1,9 @@
 import React, { useState, Button } from "react";
-import LogoFacebook from "../logo/Logo-Facebook-rond.png";
-import Logo42 from "../logo/logo_42.jpg";
-import LeftArrow from "../logo/left-arrow.png";
-import RightArrow from "../logo/right-arrow.png";
+import LogoFacebook from '../../assets/logo/Logo-Facebook-rond.png';
+import Logo42 from "../../assets/logo/logo_42.jpg";
+import LeftArrow from "../../assets/logo/left-arrow.png";
+import RightArrow from "../../assets/logo/right-arrow.png";
 import "./Auth.css";
-import "../App.css";
 import { useHttpClient } from "../shared/hooks/http-hook";
 import ErrorModal from "../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../shared/UIElements/LoadingSpinner";

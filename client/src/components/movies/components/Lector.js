@@ -3,7 +3,6 @@ import Commentary from "./Commentary/Commentary";
 import { Player } from "video-react";
 
 import "./Lector.css";
-// import "../../App.css";
 // import "node_modules/video-react/dist/video-react.css"; // import css
 
 const Lector = (props) => {
