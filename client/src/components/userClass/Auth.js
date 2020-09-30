@@ -7,12 +7,14 @@ import "./Auth.css";
 import PasswordStrengthMeter from './PasswordStrengthMeter';
 import zxcvbn from 'zxcvbn';
 import { ToastContainer } from 'react-toastify';
+import queryString from "query-string";
 
 // Import services
 import { signUpNewUser } from '../shared/services/userServices/registerUserService'
 import { loginAuthUser } from '../shared/services/userServices/loginUserService'
 
 const customNotification = require('../utils/notification');
+const createHistory = require("history").createBrowserHistory;
 
 class Auth extends React.Component {
   constructor(props) {
@@ -32,6 +34,21 @@ class Auth extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handlFormSubmit = this.handlFormSubmit.bind(this);
     this.switchModeHandler = this.switchModeHandler.bind(this);
+  }
+
+  componentWillMount() {
+    let history = createHistory();
+    var query = queryString.parse(this.props.location.search);
+    if (query.token) {
+      localStorage.setItem('token', query.token);
+      localStorage.setItem('userId', query.userId);
+      localStorage.setItem('familyName', query.familyName);
+      localStorage.setItem('givenName', query.givenName);
+      localStorage.setItem('imageUrl', query.imageUrl);
+      localStorage.setItem('dateOfCreation', query.dateOfCreation);
+      history.push("/movies");
+      window.location.href = "/movies";
+    }
   }
 
   fireNotificationAlert(response) {
@@ -142,7 +159,7 @@ class Auth extends React.Component {
                       alt="login with facebook"
                     />
                   </a>
-                  <a href="./" className="social">
+                  <a href="http://localhost:3000/login/42" className="social">
                     <img
                       src={Logo42}
                       className="icon"
@@ -220,7 +237,7 @@ class Auth extends React.Component {
                       alt="login with facebook"
                     />
                   </a>
-                  <a href="./" className="social">
+                  <a href="http://localhost:3000/login/42" className="social">
                     <img
                       src={Logo42}
                       className="icon"

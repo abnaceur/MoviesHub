@@ -11,6 +11,8 @@ let mongoose = require('mongoose');
 const swaggerDocument = require('./docs/openApiDocumentation/BasicInformation');
 const swaggerUi = require('swagger-ui-express');
 
+const passport = require('passport');
+
 // Main app
 var app = express();
 
@@ -18,8 +20,11 @@ var app = express();
 app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //Use hamlet 
-app.use(helmet())
- 
+app.use(helmet());
+
+// Initialize passprt
+app.use(passport.initialize());
+
 // Logs
 app.use(logger('dev'));
 

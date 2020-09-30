@@ -38,7 +38,26 @@ creatNewRegisterUser = (userInfo) => {
     });
 }
 
+
+creatNewOauth2UserVia42 = (userInfo) => {
+    return new Promise(async (resolve, reject) => {
+        resolve({
+            _id: new mongoose.Types.ObjectId,
+            googleId: userInfo.id,
+            imageUrl: userInfo.photos[0].value,
+            email: userInfo.emails[0].value,
+            name: userInfo.displayName,
+            password: await getHashPwd(),
+            givenName: userInfo.name.givenName,
+            familyName: userInfo.name.familyName,
+        })
+    });
+}
+
+
+
 module.exports = {
     creatNewRegisterUser,
+    creatNewOauth2UserVia42,
     creatNewUser,
 }
