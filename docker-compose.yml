@@ -6,13 +6,13 @@ services:
     build: ./server/
     environment:
       - VIRTUAL_HOST=si.hpt.local
-    volumes : 
+    volumes:
       - ./server/:/usr/src/app:rw
     ports:
-      - "3000:3000"
+      - '3000:3000'
     links:
       - mongo
-  
+
   mongo:
     container_name: hpt_mongo_dev
     image: mongo
@@ -21,7 +21,7 @@ services:
     volumes:
       - ./data:/data/db
     ports:
-      - "27017:27017"
+      - '27017:27017'
 
   client_dev:
     image: node:latest
@@ -31,10 +31,10 @@ services:
       - ./client/:/home/node/app
     working_dir: /home/node/app
     ports:
-        - "5000:5000"
+      - '5000:5000'
     env_file:
       - client/.env
-    
+
   mongoclient:
     image: mongoclient/mongoclient:latest
     container_name: mongoclient

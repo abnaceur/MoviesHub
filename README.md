@@ -1,51 +1,68 @@
-HYPERTUBE PROJECT
-=========================
+# HYPERTUBE PROJECT
 
 ## Description of the project :
 
 HYPERTUBE is a plateform for video streaming.
 
-## Team 
- --
+## Team
+
+- akhoucha akhoucha@student.42.fr
+- gucalvi gucalvi@student.42.fr
+- mbengtss mbengtss@student.42.fr
+- yiwang yiwang@student.42.fr
 
 ## Project's Goals and objectives
- --
+
+- The project proposes to create a web application that allows users to search
+  and watch videos;
+- The research engine will present lists of movies according to users' perferred
+  filters;
+- The player will be directly integrated to the site, and the videos will be
+  downloaded through the BitTorrent protocol;
+- Whenever a movie is selected to play, it will be downloaded from the server
+  and streamed on the web player at the same time;
+- Unwatched movies will be erased from the database after 1 month.
 
 ## Technologies :
- - NodeJs/Express v8.11.4
- - ReactJs v16.3.2
- - Redux v4.0.0
- - MongoDb
- - Docker 17.12.1-ce
- - Bootstrap 3
+
+- NodeJs/Express v8.11.4
+- ReactJs v16.3.2
+- Redux v4.0.0
+- MongoDb
+- Docker 17.12.1-ce
+- Bootstrap 3
 
 ## Screenshots
 
 ## Git flow
-There are two branches:
- - Master - origin
- - Develop - follow master
 
-The *Master* branch is used for production. Only the features we know are perfectly working should be merged on *Master* 
-The *Dev* branch is where new features are developped.
+There are two branches:
+
+- Master - origin
+- Develop - follow master
+
+The _Master_ branch is used for production. Only the features we know are
+perfectly working should be merged on _Master_ The _Dev_ branch is where new
+features are developped.
 
 ## Git Commit messages guidlines
 
-Commit messages should conform to the following rules:  
-	- Title in capital letters  
-	- The title is separated from the body of the message by one empty line  
-	- A line should not be longer than 80 characters  
-	- The message must focus on the WHY and WHAT, not HOW.  
-  
-This template can be used for the commit messages:  
+Commit messages should conform to the following rules:
+
+- Title in capital letters
+- The title is separated from the body of the message by one empty line
+- A line should not be longer than 80 characters
+- The message must focus on the WHY and WHAT, not HOW.
+
+This template can be used for the commit messages:
 
 > COMMIT MESSAGE TITLE
-> 
-> Here, I explain WHAT I did (the improvements I made to the code, what I removed
-> from it, etc...)
-> I alos explain WHY I did it.
-  
-A template ready for usage is also avaible in the *misc* floder, at the root of the repo.  
+>
+> Here, I explain WHAT I did (the improvements I made to the code, what I
+> removed from it, etc...) I alos explain WHY I did it.
+
+A template ready for usage is also avaible in the _misc_ floder, at the root of
+the repo.
 
 ## Install the development environment
 
@@ -96,39 +113,38 @@ mkdir uploads
 ```
 
 Build the project from the root directory
+
 ```bash
 docker-compose up --build
 ```
 
 #### Prerequisite :
- - NodeJs v8.11.4
- - Docker 17.12.1-ce
- - Docker compose
- - Port 3030 open (inbound/outBound)
+
+- NodeJs v8.11.4
+- Docker 17.12.1-ce
+- Docker compose
+- Port 3030 open (inbound/outBound)
 
 #### Nice to know :
-	--
+
+    --
 
 #### Setup DB SQL if available
+
 Replace this Ip addresse in your container and restart docker.
 
 Pour generer la bdd les differentes possibilites:
 
 mysql -u hypertube -p hypertube < hypertube.sql
 
-UNIX
-shell> mysql hypertube < hypertube.sql
+UNIX shell> mysql hypertube < hypertube.sql
 
-The same in Windows command prompt:
-mysql -p -u hypertube hypertube < hypertube.sql
+The same in Windows command prompt: mysql -p -u hypertube hypertube <
+hypertube.sql
 
-PowerShell
-C:\> cmd.exe /c "mysql -u root -p hypertube < hypertube.sql"
+PowerShell C:\> cmd.exe /c "mysql -u root -p hypertube < hypertube.sql"
 
-MySQL command line
-mysql> use hypertube;
-mysql> source hypertube.sql;
-
+MySQL command line mysql> use hypertube; mysql> source hypertube.sql;
 
 ### Help
 
@@ -138,34 +154,38 @@ Stop and remove all containers
 docker stop $(docker ps -a -q)
 ```
 
-Connect to a container via bash (get the container name you want to connect to via command `docker ps`)
+Connect to a container via bash (get the container name you want to connect to
+via command `docker ps`)
+
 ```bash
 docker exec -ti containername bash
 ```
 
-Execute a command directly in a container without connecting in bash (get the container name you want to connect to via command `docker ps`)
+Execute a command directly in a container without connecting in bash (get the
+container name you want to connect to via command `docker ps`)
 
 ```bash
 docker exec -i containername yourcommand
 ```
 
-Delete all images 
+Delete all images
 
 ```bash
 docker rmi -f $(docker images -q)
 ```
 
-Show images 
+Show images
 
 ```bash
 docker images
 ```
 
-if you face this error message :
-"Error: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by /usr/src/app/node_modules/bcrypt/lib/binding/bcrypt_lib.node)"
+if you face this error message : "Error:
+/usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `CXXABI_1.3.9' not found
+(required by /usr/src/app/node_modules/bcrypt/lib/binding/bcrypt_lib.node)"
 
-Cause : bcrypt is lib is not compatible.
-Solution : To avoid this error do the following
+Cause : bcrypt is lib is not compatible. Solution : To avoid this error do the
+following
 
 ```bash
 # Connect to your container backend
@@ -180,19 +200,19 @@ npm install
 
 ## FAQ
 
-Error :
-ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
+Error : ERROR: could not find an available, non-overlapping IPv4 address pool
+among the defaults to assign to the network
 
-Solution :
-docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
+Solution : docker network rm
+$(docker network ls | grep "bridge" | awk '/ / { print $1 }')
 
-If on starting the containners in production mode 
-you face an error of refused connection to mongodb container then :
+If on starting the containners in production mode you face an error of refused
+connection to mongodb container then :
 
-Solution : change the DB_HOST in backend/.env to localhost
-Restart the containers.
+Solution : change the DB_HOST in backend/.env to localhost Restart the
+containers.
 
-If the error persiste then fetch the IpAddress of the mongo container 
+If the error persiste then fetch the IpAddress of the mongo container
 
 ```bash
 # Connect to your container backend
