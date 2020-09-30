@@ -3,14 +3,17 @@ const User = require('../../models/user');
 
 function userExist(email, pseudonyme) {
     return new Promise((resolve, reject) => {
-        User.find({
-            $or: [
-                { 'email': email },
-                { 'pseudonyme': pseudonyme }
-            ]
-        }).then(usr => {
-            usr.length === 0 ?
-                resolve(false) : resolve(true);
+        User.find(
+            { 'email': email }
+        ).then(usr => {
+            if (usr.length === 0 && pseudonyme !== ""){
+                User.find(
+                    { 'pseudonyme': pseudonyme }
+                ).then(user => {
+                    console.log("usr1 :", user)
+                    user.length === 0 ?
+                        resolve(false) : resolve(true);
+                })} else resolve(true)
         })
     })
 }
@@ -26,7 +29,7 @@ async function creatNewUserService(data, res) {
         } else {
             // Created a new account
             let user = new User(await userClass.creatNewRegisterUser(data))
-    
+
             user.save()
                 .then(results => {
                     res.status(200).json({
@@ -35,7 +38,7 @@ async function creatNewUserService(data, res) {
                     })
                 }).catch(err => {
                     res.status(200).json({
-                        msg: "An error occured, this incident will be repproted",
+                        msg: "An AAA error occured, this incident will be repproted",
                         code: 500
                     })
                 })

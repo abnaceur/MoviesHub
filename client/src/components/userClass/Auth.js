@@ -26,6 +26,8 @@ class Auth extends React.Component {
       pseudonyme: "",
       password: "",
       email: "",
+      emailOrUsername: "",
+      loginPwd: "",
       photo: "",
       confPassword: "",
       resgiterUser: "",
@@ -67,8 +69,8 @@ class Auth extends React.Component {
 
   async loginUser() {
     let data = {
-      password: this.state.password,
-      email: this.state.email
+      password: this.state.loginPwd,
+      email: this.state.emailOrUsername
     }
     let response = await loginAuthUser(data);
     this.fireNotificationAlert(response);
@@ -170,7 +172,7 @@ class Auth extends React.Component {
                 <input
                   id="Username"
                   placeholder="Username"
-                  name="pseudonyme:"
+                  name="pseudonyme"
                   element="input"
                   type="text"
                   label="Username"
@@ -248,14 +250,14 @@ class Auth extends React.Component {
                 <input
                   type="text"
                   placeholder="Input email or username"
-                  name="email"
+                  name="emailOrUsername"
                   onChange={this.handleChange}
                   required={true}
                 />
 
                 <input
                   type="password"
-                  name="password"
+                  name="loginPwd"
                   onChange={this.handleChange}
                   placeholder="Input Password"
                   required={true}
