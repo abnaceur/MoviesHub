@@ -8,6 +8,7 @@ import ResetPassword from "./components/user/forgotPassword/ResetPassword";
 import UpdateProfile from "./components/user/profil/UpdateProfile";
 import Lector from "./components/movies/components/Lector";
 import AuthRoute from './components/midlleware/RouteAuth';
+import Logout from './components/Logout/Logout';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -31,6 +32,7 @@ const App = () => {
           <Route exact path="/resetPassword" component={ResetPassword} />
           <AuthRoute exact path="/profil" component={UpdateProfile} />
           <AuthRoute exact path="/lector" component={Lector} />
+          <AuthRoute exact path="/logout" component={Logout} />
           <Redirect to="/" />
         </Switch>
         <Footer />
