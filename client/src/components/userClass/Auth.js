@@ -36,11 +36,11 @@ class Auth extends React.Component {
 
   fireNotificationAlert(response) {
     if (response && response.code === 200)
-    customNotification.fireNotification("success", response.msg);
-  if (response && response.code === 204)
-    customNotification.fireNotification("warning", response.msg);
-  if (response && response.code === 500)
-    customNotification.fireNotification("error", response.msg);
+      customNotification.fireNotification("success", response.msg);
+    if (response && response.code === 204)
+      customNotification.fireNotification("warning", response.msg);
+    if (response && response.code === 500)
+      customNotification.fireNotification("error", response.msg);
   }
 
   async signupUserHandler() {
@@ -55,6 +55,17 @@ class Auth extends React.Component {
     }
     let response = await loginAuthUser(data);
     this.fireNotificationAlert(response);
+    if (response.code === 200) {
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('userId', response.userId);
+      localStorage.setItem('familyName', response.familyName);
+      localStorage.setItem('givenName', response.givenName);
+      localStorage.setItem('imageUrl', response.imageUrl);
+      localStorage.setItem('dateOfCreation', response.dateOfCreation);
+
+      // Redirect to movies page
+      window.location.href = "/movies"; 
+    }
   }
 
   async handlFormSubmit(e) {
@@ -67,7 +78,6 @@ class Auth extends React.Component {
     if (loginMode == "right-panel-active")
       if (this.valdateFormData())
         this.signupUserHandler();
-
   }
 
   handleChange(event) {
@@ -209,7 +219,7 @@ class Auth extends React.Component {
                       className="icon"
                       alt="login with facebook"
                     />
-                  </a>Input email
+                  </a>
                   <a href="./" className="social">
                     <img
                       src={Logo42}

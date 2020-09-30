@@ -7,6 +7,8 @@ import UnknowPassword from "./components/user/forgotPassword/UnknowPassword";
 import ResetPassword from "./components/user/forgotPassword/ResetPassword";
 import UpdateProfile from "./components/user/profil/UpdateProfile";
 import Lector from "./components/movies/components/Lector";
+import AuthRoute from './components/midlleware/RouteAuth';
+
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
@@ -23,24 +25,12 @@ const App = () => {
       <Router>
         <MainNavigation />
         <Switch>
-          <Route path="/" exact>
-            <Auth />
-          </Route>
-          <Route path="/movies" exact>
-            <Movies />
-          </Route>
-          <Route path="/unknowPassword" exact>
-            <UnknowPassword />
-          </Route>
-          <Route path="/resetPassword" exact>
-            <ResetPassword />
-          </Route>
-          <Route path="/profil" exact>
-            <UpdateProfile />
-          </Route>
-          <Route path="/lector" exact>
-            <Lector />
-          </Route>
+          <Route exact path="/" component={Auth} />
+          <AuthRoute exact path="/movies" component={Movies} />
+          <Route exact path="/unknowPassword" component={UnknowPassword} />
+          <Route exact path="/resetPassword" component={ResetPassword} />
+          <AuthRoute exact path="/profil" component={UpdateProfile} />
+          <AuthRoute exact path="/lector" component={Lector} />
           <Redirect to="/" />
         </Switch>
         <Footer />
