@@ -57,7 +57,7 @@ export function getMoviesByRatings(query, page, filter) {
                 results.data.data.movies = [];
                 results.data.data.movies = new_result;
 
-                resolve(results.data);
+                resolve(results.data.data);
             }, 150);
         }
     })

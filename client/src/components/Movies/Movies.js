@@ -50,7 +50,7 @@ class Movies extends React.Component {
 
     async componentDidMount() {
         this.setState({ onLoading: this.state.loading })
-        // window.addEventListener('scroll', this.handleScrollDown);
+        window.addEventListener('scroll', this.handleScrollDown);
     }
 
     handleChangeInputText(event) {
@@ -68,7 +68,6 @@ class Movies extends React.Component {
             allMovies: [],
             pageMovie: 1
         });
-        // window.addEventListener('scroll', this.handleScrollDown, true);
 
         const target = event.target;
         const value = target.value;
@@ -92,7 +91,7 @@ class Movies extends React.Component {
                 setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
-    
+
                 }, 20);
                 break;
             case 'ratingMin':
@@ -103,7 +102,7 @@ class Movies extends React.Component {
                 setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
-    
+
                 }, 20);
                 break;
             case 'query_term':
@@ -112,9 +111,9 @@ class Movies extends React.Component {
                     query: query
                 })
                 setTimeout(async () => {
-                    allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
+                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
-    
+
                 }, 20);
                 break;
             case 'sort_by':
@@ -125,7 +124,7 @@ class Movies extends React.Component {
                 setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
-    
+
                 }, 20);
                 break;
             case 'order_by':
@@ -136,7 +135,7 @@ class Movies extends React.Component {
                 setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
-    
+
                 }, 20);
                 break;
             case 'decadeFilter':
@@ -152,7 +151,6 @@ class Movies extends React.Component {
                 setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(this.state.query, this.state.pageMovie, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
-    
                 }, 20);
                 break;
         }
@@ -191,12 +189,16 @@ class Movies extends React.Component {
         });
         let allMoviesByRatings = await getMoviesByRatings(query, page);
         this.getAllMoviesSetup(allMoviesByRatings)
-    
+
     }
 
 
     handleScrollDown = async () => {
-        if (document.documentElement.offsetHeight - parseInt(window.innerHeight + document.documentElement.scrollTop) <= 5) {
+        let body = document.body,
+            html = document.documentElement;
+        let docHeight = Math.max(body.scrollHeight, body.offsetHeight,
+            html.clientHeight, html.scrollHeight, html.offsetHeight);
+        if (docHeight - parseInt(window.innerHeight + document.documentElement.scrollTop) <= 5) {
             let page = this.state.pageMovie + 1;
             this.setState({
                 pageMovie: page
@@ -209,17 +211,17 @@ class Movies extends React.Component {
                 let query = this.state.query;
                 let allMoviesByRatings = await getMoviesByRatings(query, page, this.state.decadeFilter);
                 this.getAllMoviesSetup(allMoviesByRatings)
-    
-                document.documentElement.scrollTop = document.documentElement.scrollTop - 200;
+
+                document.documentElement.scrollTop = document.documentElement.scrollTop - 10;
             }
         };
     }
 
-    // async UNSAFE_componentWillUnmount() {
-    //     window.removeEventListener('scroll', this.handleScrollDown, true);
-    // }
+    async UNSAFE_componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScrollDown, true);
+    }
 
-    getAllMoviesSetup(allMoviesByRatings){
+    getAllMoviesSetup(allMoviesByRatings) {
         if (allMoviesByRatings !== undefined && allMoviesByRatings.movies) {
             let moviesOld = this.state.allMovies;
             if (allMoviesByRatings.movies !== undefined && allMoviesByRatings.movies !== null)
@@ -253,7 +255,7 @@ class Movies extends React.Component {
         let allMoviesByRatings = await getMoviesByRatings(query, this.state.pageMovie);
         // let getMovieViews = await getMovieViewsByUser(this.state.userId);
         this.getAllMoviesSetup(allMoviesByRatings)
-      
+
         // if (getMovieViews !== undefined && getMovieViews.code === 200) {
         //     this.setState({
         //         allUserViewedMovies: getMovieViews.data,
@@ -406,7 +408,7 @@ class Movies extends React.Component {
                                                                 {this.checkIfMovieViewed(movie.id)}
                                                             </div>
                                                             <div className="card-desc" style={{ overflowWrap: 'break-word' }}>
-                                                                <h3 style={{margin: "0 0"}}>{movie.title}</h3>
+                                                                <h3 style={{ margin: "0 0" }}>{movie.title}</h3>
                                                                 <h5><b>Rating : </b>{movie.rating}</h5>
                                                                 <div style={{ 'whiteSpace': 'nowrap', 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}>
                                                                     {parse(movie.summary)}
