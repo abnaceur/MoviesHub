@@ -10,6 +10,8 @@ import { ToastContainer } from 'react-toastify';
 
 // Import services
 import { signUpNewUser } from '../shared/services/userServices/registerUserService'
+import { loginAuthUser } from '../shared/services/userServices/loginUserService'
+
 const customNotification = require('../utils/notification');
 
 class Auth extends React.Component {
@@ -32,18 +34,40 @@ class Auth extends React.Component {
     this.switchModeHandler = this.switchModeHandler.bind(this);
   }
 
+  fireNotificationAlert(response) {
+    if (response && response.code === 200)
+    customNotification.fireNotification("success", response.msg);
+  if (response && response.code === 204)
+    customNotification.fireNotification("warning", response.msg);
+  if (response && response.code === 500)
+    customNotification.fireNotification("error", response.msg);
+  }
+
+  async signupUserHandler() {
+    let response = await signUpNewUser(this.state);
+    this.fireNotificationAlert(response);
+  }
+
+  async loginUser() {
+    let data = {
+      password: this.state.password,
+      email: this.state.email
+    }
+    let response = await loginAuthUser(data);
+    this.fireNotificationAlert(response);
+  }
+
   async handlFormSubmit(e) {
     e.preventDefault();
-    if (this.valdateFormData()) {
-      let resposne = await signUpNewUser(this.state);
-      if (resposne && resposne.code === 200)
-        customNotification.fireNotification("success", resposne.msg);
-      if (resposne && resposne.code === 204)
-        customNotification.fireNotification("warning", resposne.msg);
-      if (resposne && resposne.code === 500)
-        customNotification.fireNotification("error", resposne.msg);
+    const { loginMode } = this.state;
 
-    }
+    if (loginMode == "left-panel-active")
+      this.loginUser();
+
+    if (loginMode == "right-panel-active")
+      if (this.valdateFormData())
+        this.signupUserHandler();
+
   }
 
   handleChange(event) {
@@ -176,7 +200,7 @@ class Auth extends React.Component {
               </form>
             </div>
             <div className="form-container sign-in-container">
-              <form >
+              <form onSubmit={this.handlFormSubmit} encType="multipart/form-data">
                 <h1>Sign in</h1>
                 <div className="social-container">
                   <a href="./" className="social">
@@ -185,7 +209,7 @@ class Auth extends React.Component {
                       className="icon"
                       alt="login with facebook"
                     />
-                  </a>
+                  </a>Input email
                   <a href="./" className="social">
                     <img
                       src={Logo42}
@@ -194,8 +218,22 @@ class Auth extends React.Component {
                     />
                   </a>
                 </div>
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
+                <input
+                  type="text"
+                  placeholder="Input email or username"
+                  name="email"
+                  onChange={this.handleChange}
+                  required={true}
+                />
+
+                <input
+                  type="password"
+                  name="password"
+                  onChange={this.handleChange}
+                  placeholder="Input Password"
+                  required={true}
+                />
+
                 <a className="forgotLink" href="./unknowPassword">
                   Forgot your password?
               </a>

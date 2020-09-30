@@ -8,4 +8,9 @@ const upload = require('../middleware/uploadFiles');
 */
 router.post('/register', upload.any(), userController.registerNewUserControl);
 
+/*
+** [POST] Route:"/users/loginform" [USED]
+*/
+router.post('/loginform', userController.loginformUserControl);
+
 module.exports = router;
