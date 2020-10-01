@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import UpdatePassword from "./UpdatePassword";
-// import ErrorModal from "../../shared/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
 import {
   VALIDATOR_REQUIRE,
@@ -9,8 +8,8 @@ import {
 } from "../../shared/util/validators";
 import { useForm } from "../../shared/hooks/form-hook";
 import Input from "../../shared/FormElements/Input";
-import "../Auth.css";
-import "./Profile.css";
+import "../../userClass/Auth.css";
+// import "./Profile.css";
 import Icon from "@material-ui/core/Icon";
 
 const UpdateProfile = () => {
@@ -60,11 +59,17 @@ const UpdateProfile = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const responseData = await sendRequest(
-          `http://localhost:5000/api/user/3`
-        );
-        console.log(responseData);
-        setLoadedUser(responseData.user);
+        // const responseData = await sendRequest(
+        //   // `http://localhost:5000/api/user/3`
+        // );
+        // console.log(responseData);
+        let result = {
+          username: "Sakala",
+          email: "melchiorbengtsson@gmail.com",
+          firstname: "Melchior",
+          lastname: "Bengtsson",
+        };
+        setLoadedUser(result);
       } catch (err) {}
     };
     fetchComments();
@@ -98,45 +103,49 @@ const UpdateProfile = () => {
 
           <div className="Update_information">
             <h3>Update information</h3>
-            <Input
+            <input
               id="username"
               element="input"
               type="text"
               validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
               label="Username"
+              placeholder={loadedUser.username}
               errorText="Please enter a valid Username. (2 characters min.)"
               initialValue={loadedUser.username}
               initialValid={true}
               onInput={inputHandler}
             />
-            <Input
+            <input
               id="email"
               element="input"
               type="text"
               validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
               label="Email"
+              placeholder={loadedUser.email}
               errorText="Please enter a valid Email."
               initialValue={loadedUser.email}
               initialValid={true}
               onInput={inputHandler}
             />
-            <Input
+            <input
               id="firstname"
               element="input"
               type="text"
               validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
               label="Firstname"
+              placeholder={loadedUser.firstname}
               errorText="Please enter a firstname. (2 characters min.)"
               initialValue={loadedUser.firstname}
               initialValid={true}
               onInput={inputHandler}
             />
-            <Input
+            <input
               id="lastname"
               element="input"
               type="text"
               validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
               label="Lastname"
+              placeholder={loadedUser.lastname}
               errorText="Please enter a lastname. (2 characters min.)"
               initialValue={loadedUser.lastname}
               initialValid={true}

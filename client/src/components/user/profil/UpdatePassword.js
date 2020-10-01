@@ -16,15 +16,7 @@ const UpdatePassword = () => {
   const { sendRequest } = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
-      oldpass: {
-        value: "",
-        isValid: false,
-      },
       newpass: {
-        value: "",
-        isValid: false,
-      },
-      repeatpass: {
         value: "",
         isValid: false,
       },
@@ -38,9 +30,7 @@ const UpdatePassword = () => {
         `http://localhost:5000/api/user/updatePassword`,
         "POST",
         JSON.stringify({
-          oldpass: formState.inputs.oldpass.value,
           newpass: formState.inputs.newpass.value,
-          repeatpass: formState.inputs.repeatpass.value,
         }),
         {
           "Content-Type": "application/json",
@@ -53,37 +43,16 @@ const UpdatePassword = () => {
     <React.Fragment>
       <div className="Update_information">
         <h3>Update Password</h3>
-        <Input
-          id="oldpass"
-          element="input"
-          type="password"
-          validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
-          label="Current Password"
-          errorText="Please enter a valid Password."
-          initialValue=""
-          initialValid={true}
-          onInput={inputHandler}
-        />
-        <Input
+        <input
           id="newpass"
           element="input"
           type="password"
           validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
           label="New Password"
+          placeholder="New Password"
           errorText="Please enter a valid Password."
           initialValue=""
           initialValid={true}
-          onInput={inputHandler}
-        />
-        <Input
-          id="repeatpass"
-          element="input"
-          type="password"
-          validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
-          label="Repeat Password"
-          errorText="Please enter a valid Password."
-          initialValue=""
-          initialValid={false}
           onInput={inputHandler}
         />
         <button onClick={UpdatePassword}>Update password</button>
