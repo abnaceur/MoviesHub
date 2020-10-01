@@ -44,7 +44,6 @@ class Movies extends React.Component {
         }
         this.handleChangeFilterCat = this.handleChangeFilterCat.bind(this);
         this.handleChangeInputText = this.handleChangeInputText.bind(this);
-        this.goToMaterialDatails = this.goToMaterialDatails.bind(this);
         this.goToMovieDatails = this.goToMovieDatails.bind(this);
     }
 
@@ -167,14 +166,10 @@ class Movies extends React.Component {
             await this.props.onGetFilteredMaterials(this.state.currentPagination, this.state.selectedCategory)
     }
 
-    goToMaterialDatails(material) {
-        this.props.onStoreMaterialDetails(material);
-    }
-
     goToMovieDatails(e, movie) {
         //e.preventDefault();
         window.removeEventListener('scroll', this.handleScrollDown);
-        this.props.onStoreMaterialDetails(movie);
+        localStorage.setItem("moviedetails", JSON.stringify(movie));
     }
 
     async FilterSearchByGenre(query) {
