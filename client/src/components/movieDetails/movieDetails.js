@@ -95,6 +95,7 @@ class MovieDetails extends React.Component {
 
     videos = JSON.parse(localStorage.getItem("moviedetails"));
 
+    console.log("videos :",videos);
     if (videos.url !== undefined) {
       //saveMovieDetails(videos);
       this.setState({
@@ -172,247 +173,202 @@ class MovieDetails extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <div className="content-wrapper">
-            <section className="content">
-              <div className="row">
-
-                <div className="col-md-12">
-                  <div className="box box-primary" id="fixMarginTop">
-                    <div className="box-header with-border">
-                      <h3 className="box-title">Movie details</h3>
-
-                      <div className="box-tools pull-right">
-                        <button
-                          type="button"
-                          className="btn btn-box-tool"
-                          data-widget="collapse"
-                        >
-                          <i className="fa fa-minus"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-box-tool"
-                          data-widget="remove"
-                        >
-                          <i className="fa fa-times"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div className="box-body">
-                      <div className="row">
-                        <div className="col-md-6 tab-content">
-                          <div
-                            role="tabpanel"
-                            className="tab-pane active"
-                            id="seite1"
-                          >
-                            <article className="panel panel-default">
-                              <div className="panel-body">
-                                <div className="row">
-                                  <img
-                                    className="img-responsive center-block"
-                                    src={
-                                      this.state.materialDetails.large_cover_image
-                                    }
-                                    alt="pic holder"
-                                  />
-                                  <br></br>
-
-
-                                </div>
-                              </div>
-                            </article>
-                          </div>
-                        </div>
-
-                        <div className="col-md-6 tab-content">
-                          <div
-                            role="tabpanel"
-                            className="tab-pane active"
-                            id="seite1"
-                          >
-                            <article className="panel panel-default">
-                              <header className="panel-heading">
-                                <h1 className="text-muted text-center">
-                                </h1>
-                              </header>
-                              <div className="panel-body">
-                                <div className="row">
-                                  <div className="textbox">
-                                    <b>Rating :</b>
-                                    {this.state.materialDetails.rating}
-                                    <br></br>
-                                    <b>Year :</b>{" "} {this.state.materialDetails.year}
-                                  </div>
-
-                                  <div className="textbox">
-                                    <b>Genre :</b>
-                                    {this.state.materialDetails.genres && this.state.materialDetails.genres.length > 0 ?
-                                      this.state.materialDetails.genres.map((g, i) => {
-                                        return <div key={i} class="tags">
-                                          <a href="#" class="success">{g}</a>
-                                        </div>
-                                      }) : ""}
-
-                                  </div>
-
-                                  <div className="textbox">
-                                    <b>Description :</b>{" "}
-                                    {this.state.materialDetails.description_full}
-                                  </div>
-
-
-                                  <br></br>
-                                  <b>Play movie :</b>
-                                  <br></br>
-                                  <div
-                                    data-toggle="modal"
-                                    data-target='#openModalMovie'
-                                    id="modal-default-toggle"
-                                    className="col-md-12 image-grid-item"
-                                    className="col-md-12 image-grid-item"
-                                  >
-                                    <div
-                                      style={{ backgroundColor: "light-blue" }}
-                                      className="image-grid-cover"
-                                    >
-                                      <span className="image-grid-clickbox"></span>
-                                      <span className="cover-wrapper">
-                                        {this.state.materialDetails.title} <br></br>
-                                        {this.state.videoUrlLink === "" ? "loading ..." : ""}
-                                      </span>
-                                    </div>
-                                  </div>
-
-                                </div>
-                              </div>
-                            </article>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <section className="content">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="box box-primary" id="fixMarginTop">
+              <div className="box-header with-border">
+                <h3 className="box-title">Movie details</h3>
               </div>
 
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="box box-primary">
-                    <div className="box-header with-border">
-                      <h3 className="box-title">Leave a comment</h3>
+              <div className="box-body">
+                <div className="row">
+                  <div className="col-md-6 tab-content">
+                    <div
+                      role="tabpanel"
+                      className="tab-pane active"
+                      id="seite1"
+                    >
+                      <article className="panel panel-default">
+                        <div className="panel-body">
+                          <div className="row">
+                            <img
+                              className="img-responsive center-block"
+                              src={
+                                this.state.materialDetails.large_cover_image
+                              }
+                              alt="pic holder"
+                            />
+                            <br></br>
 
-                      <div className="box-tools pull-right">
-                        <button
-                          type="button"
-                          className="btn btn-box-tool"
-                          data-widget="collapse"
-                        >
-                          <i className="fa fa-minus"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-box-tool"
-                          data-widget="remove"
-                        >
-                          <i className="fa fa-times"></i>
-                        </button>
-                      </div>
+
+                          </div>
+                        </div>
+                      </article>
                     </div>
-                    <div className="box-body">
-                      <div className="row">
-                        <div>
+                  </div>
 
-                          <div
-                            className="modal fade"
-                            id="openModalMovie"
-                          >
-                            <div className="modal-dialog" id="opnVideo">
-                              <div className="modal-content" id="modal-contentStyle">
-                                <div className="modal-header">
-                                  <button
-                                    style={{
-                                      'color': 'white', 'fontSize': '48px',
-                                      'position': 'fixed',
-                                      'right': '0px'
-                                    }}
-                                    type="button"
-                                    className="close"
-                                    data-dismiss="modal"
-                                    aria-label="Close"
-                                  >
-                                    <span aria-hidden="true">
-                                      &times;
-                                            </span>
-                                  </button>
-                                  <h4 className="modal-title" style={{ 'color': 'white' }}>
-                                    {this.state.materialDetails.title}
-                                  </h4>
-                                </div>
-                                <div className="modal-body">
-                                  {this.videoPlayer()}
-                                </div>
-                                <br></br>
+                  <div className="col-md-6 tab-content">
+                    <div
+                      role="tabpanel"
+                      className="tab-pane active"
+                      id="seite1"
+                    >
+                      <article className="panel panel-default">
+                        <header className="panel-heading">
+                          <h1 className="text-muted text-center">
+                          </h1>
+                        </header>
+                        <div className="panel-body">
+                          <div className="row">
+                            <div className="textbox">
+                              <b>Rating :</b>
+                              {this.state.materialDetails.rating}
+                              <br></br>
+                              <b>Year :</b>{" "} {this.state.materialDetails.year}
+                            </div>
+
+                            <div className="textbox">
+                              <b>Genre :</b>
+                              {this.state.materialDetails.genres && this.state.materialDetails.genres.length > 0 ?
+                                this.state.materialDetails.genres.map((g, i) => {
+                                  return <div key={i} class="tags">
+                                    <a href="#" class="success">{g}</a>
+                                  </div>
+                                }) : ""}
+
+                            </div>
+
+                            <div className="textbox">
+                              <b>Description :</b>{" "}
+                              {this.state.materialDetails.description_full}
+                            </div>
+
+
+                            <br></br>
+                            <b>Play movie :</b>
+                            <br></br>
+                            <div
+                              data-toggle="modal"
+                              data-target='#openModalMovie'
+                              id="modal-default-toggle"
+                              className="col-md-12 image-grid-item"
+                              className="col-md-12 image-grid-item"
+                            >
+                              <div
+                                style={{ backgroundColor: "light-blue" }}
+                                className="image-grid-cover"
+                              >
+                                <span className="image-grid-clickbox"></span>
+                                <span className="cover-wrapper">
+                                  {this.state.materialDetails.title} <br></br>
+                                  {this.state.videoUrlLink === "" ? "loading ..." : ""}
+                                </span>
                               </div>
                             </div>
 
                           </div>
-
-
-
                         </div>
-                      </div>
-                      <div className="row">
-                        {this.state.moviesComments && this.state.moviesComments.length > 0 ?
-                          this.state.moviesComments.map(cm => {
-                            return (
-                              <div class="box-footer box-comments col-md-12">
-                                <div className="box-comment">
-                                  <img className="img-circle img-sm" src={
-                                    cm.userImage && cm.userImage.toString().substring(0, 5) === 'https' ?
-                                      cm.userImage
-                                      : process.env.REACT_APP_API_URL + "/" + cm.userImage} alt="User Image" />
-
-                                  <div className="comment-text">
-                                    <span className="username">
-                                      {cm.userFullName}
-                                      <span className="text-muted pull-right">{moment().format('ll', cm.dateOfCreation)}</span>
-                                    </span>
-                                    {cm.commentContent}
-                                  </div>
-                                </div>
-                              </div>
-
-                            )
-                          })
-
-                          : ""}
-
-                        <div className="box-footer col-md-12">
-                          <form>
-                            <img className="img-responsive img-circle img-sm" src={
-                              this.state.imageUrl && this.state.imageUrl.toString().substring(0, 5) === 'https' ?
-                                this.state.imageUrl
-                                : process.env.REACT_APP_API_URL + "/" + this.state.imageUrl} alt="Alt Text" />
-
-                            <div className="img-push">
-                              <textarea col="10" row="22" type="text" className="form-control input-sm" name="commentContent" onChange={this.handleFormSubmit} placeholder="Press enter to post comment" />
-                              <button onClick={(e) => { this.handleCommentSave(e) }} style={{ 'marginTop': '20px' }} className="pull-right btn btn-primary">Send</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-
-
+                      </article>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="box box-primary">
+              <div className="box-header with-border">
+                <h3 className="box-title">Leave a comment</h3>
+              </div>
+              <div className="box-body">
+                <div className="row">
+                  <div>
+                    <div
+                      className="modal fade"
+                      id="openModalMovie"
+                    >
+                      <div className="modal-dialog" id="opnVideo">
+                        <div className="modal-content" id="modal-contentStyle">
+                          <div className="modal-header">
+                            <button
+                              style={{
+                                'color': 'white', 'fontSize': '48px',
+                                'position': 'fixed',
+                                'right': '0px'
+                              }}
+                              type="button"
+                              className="close"
+                              data-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <span aria-hidden="true">
+                                &times;
+                                            </span>
+                            </button>
+                            {/* <h4 className="modal-title" style={{ 'color': 'white' }}>
+                              {this.state.materialDetails.title}
+                            </h4> */}
+                          </div>
+                          <div className="modal-body">
+                            {this.videoPlayer()}
+                          </div>
+                          <br></br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  {this.state.moviesComments && this.state.moviesComments.length > 0 ?
+                    this.state.moviesComments.map(cm => {
+                      return (
+                        <div class="box-footer box-comments col-md-12">
+                          <div className="box-comment">
+                            <img className="img-circle img-sm" src={
+                              cm.userImage && cm.userImage.toString().substring(0, 5) === 'https' ?
+                                cm.userImage
+                                : process.env.REACT_APP_API_URL + "/" + cm.userImage} alt="User Image" />
+
+                            <div className="comment-text">
+                              <span className="username">
+                                {cm.userFullName}
+                                <span className="text-muted pull-right">{moment().format('ll', cm.dateOfCreation)}</span>
+                              </span>
+                              {cm.commentContent}
+                            </div>
+                          </div>
+                        </div>
+
+                      )
+                    })
+
+                    : ""}
+
+                  <div className="box-footer col-md-12">
+                    <form>
+                      {/* <img className="img-responsive img-circle img-sm" src={
+                        this.state.imageUrl && this.state.imageUrl.toString().substring(0, 5) === 'https' ?
+                          this.state.imageUrl
+                          : process.env.REACT_APP_API_URL + "/" + this.state.imageUrl} alt="Alt Text" /> */}
+
+                      <div style={{ paddingTop: '30px', paddingBottom: '150px' }} className="img-push">
+                        <textarea col="10" row="22" type="text" className="form-control input-sm" name="commentContent" onChange={this.handleFormSubmit} placeholder="Press enter to post comment" />
+                        <button onClick={(e) => { this.handleCommentSave(e) }} style={{ 'marginTop': '20px' }} className="pull-right btn btn-primary">Send</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     );
   }
 }
