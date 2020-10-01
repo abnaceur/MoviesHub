@@ -1,7 +1,7 @@
 import React from "react";
 import MainNavigation from "./components/shared/Navigation/MainNavigation";
 import Footer from "./components/shared/Footer/Footer";
-import Auth from "./components/user/Auth";
+import Auth from "./components/userClass/Auth";
 import Movies from "./components/Movies/Movies";
 import UnknowPassword from "./components/user/forgotPassword/UnknowPassword";
 import ResetPassword from "./components/user/forgotPassword/ResetPassword";
@@ -31,6 +31,7 @@ const App = () => {
           <Route exact path="/movies" component={Movies} />
           <Route exact path="/unknowPassword" component={UnknowPassword} />
           <Route exact path="/resetPassword" component={ResetPassword} />
+          <AuthRoute exact path="/videodetails" component={MovieDetails} />
           <Route exact path="/profil" component={UpdateProfile} />
           {/* <AuthRoute exact path="/lector" component={Lector} /> */}
           <Route exact path="/logout" component={Logout} />
