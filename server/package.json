@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@amilajack/yifysubtitles": "^2.1.4",
+    "abntorrent": "bitbucket:me-me/abntorrentclient",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
