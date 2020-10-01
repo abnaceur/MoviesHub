@@ -72,30 +72,11 @@ class MovieDetails extends React.Component {
     }
   }
 
-
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.saveMovie.data !== undefined && nextProps.saveMovie.code === 200) {
-      this.setState({
-        videoUrlLink: nextProps.saveMovie.data.videoUrlLink,
-        subTitlesArr: nextProps.saveMovie.data.subTitlesArr
-      })
-      this.videoPlayer();
-    }
-
-    if (nextProps.getMovieComments.data !== undefined && nextProps.getMovieComments.code === 200) {
-      this.setState({
-        moviesComments: nextProps.getMovieComments.data,
-      })
-    }
-  }
-
   async initVideoList() {
     let videos = [];
 
     videos = JSON.parse(localStorage.getItem("moviedetails"));
 
-    console.log("videos :",videos);
     if (videos.url !== undefined) {
       //saveMovieDetails(videos);
       this.setState({
@@ -109,13 +90,27 @@ class MovieDetails extends React.Component {
   }
 
   async componentDidMount() {
-
-    if (this.state.materialDetails.url !== undefined) {
-      saveMovieDetails(this.state.materialDetails);
-    }
+    let materialDetailsTmp = {};
+    let moviesCommentsTmp = {};
 
     if (this.state.materialDetails.id !== undefined)
-      getMovieComments(this.state.materialDetails.id);
+      moviesCommentsTmp = await getMovieComments(this.state.materialDetails.id);
+    if (moviesCommentsTmp.data !== undefined && moviesCommentsTmp.code === 200) {
+      this.setState({
+        moviesComments: moviesCommentsTmp.data,
+      })
+    }
+
+    materialDetailsTmp = await saveMovieDetails(this.state.materialDetails);
+    
+    if (materialDetailsTmp.data !== undefined && materialDetailsTmp.code === 200) {
+      this.setState({
+        videoUrlLink: materialDetailsTmp.data.videoUrlLink,
+        subTitlesArr: materialDetailsTmp.data.subTitlesArr
+      })
+      this.videoPlayer();
+    }
+
   }
 
   updateVideo() {
@@ -132,7 +127,7 @@ class MovieDetails extends React.Component {
           label: arr[i].lang,
           kind: 'subtitles',
           srclang: arr[i].langShort,
-          src: process.env.REACT_APP_API_URL + "/" + arr[i].path.substr(13, arr[i].path.length)
+          src: "http://localhost:3000/" + arr[i].path.substr(13, arr[i].path.length)
         })
         i++;
       }
@@ -150,7 +145,7 @@ class MovieDetails extends React.Component {
         <ul className={styles.videoList}>
           <li className={styles.videoListItem}>
             <ReactPlayer
-              url={['http://localhost:3000/movies/stream/' + this.state.videoUrlLink]}
+              url={['http://localhost:3000/api/v1/movies/stream/' + this.state.videoUrlLink]}
               className='react-player'
               controls
               width='100%'
@@ -281,9 +276,6 @@ class MovieDetails extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <div className="box box-primary">
-              <div className="box-header with-border">
-                <h3 className="box-title">Leave a comment</h3>
-              </div>
               <div className="box-body">
                 <div className="row">
                   <div>
@@ -293,26 +285,6 @@ class MovieDetails extends React.Component {
                     >
                       <div className="modal-dialog" id="opnVideo">
                         <div className="modal-content" id="modal-contentStyle">
-                          <div className="modal-header">
-                            <button
-                              style={{
-                                'color': 'white', 'fontSize': '48px',
-                                'position': 'fixed',
-                                'right': '0px'
-                              }}
-                              type="button"
-                              className="close"
-                              data-dismiss="modal"
-                              aria-label="Close"
-                            >
-                              <span aria-hidden="true">
-                                &times;
-                                            </span>
-                            </button>
-                            {/* <h4 className="modal-title" style={{ 'color': 'white' }}>
-                              {this.state.materialDetails.title}
-                            </h4> */}
-                          </div>
                           <div className="modal-body">
                             {this.videoPlayer()}
                           </div>
@@ -323,20 +295,23 @@ class MovieDetails extends React.Component {
                   </div>
                 </div>
                 <div className="row">
+                  <div className="box-header with-border">
+                    <h3 className="box-title">Leave a comment</h3>
+                  </div>
                   {this.state.moviesComments && this.state.moviesComments.length > 0 ?
                     this.state.moviesComments.map(cm => {
                       return (
                         <div class="box-footer box-comments col-md-12">
                           <div className="box-comment">
-                            <img className="img-circle img-sm" src={
+                            {/* <img className="img-circle img-sm" src={
                               cm.userImage && cm.userImage.toString().substring(0, 5) === 'https' ?
                                 cm.userImage
-                                : process.env.REACT_APP_API_URL + "/" + cm.userImage} alt="User Image" />
+                                : process.env.REACT_APP_API_URL + "/" + cm.userImage} alt="User Image" /> */}
 
                             <div className="comment-text">
                               <span className="username">
                                 {cm.userFullName}
-                                <span className="text-muted pull-right">{moment().format('ll', cm.dateOfCreation)}</span>
+                                <span className="text-muted pull-right">{" "}{moment().format('ll', cm.dateOfCreation)}</span>
                               </span>
                               {cm.commentContent}
                             </div>

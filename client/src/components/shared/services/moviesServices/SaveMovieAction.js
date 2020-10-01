@@ -13,14 +13,6 @@ export function saveMovieDetails(data) {
         })
             .then(res => {
                 resolve(res.data)
-
-                // setTimeout(() => {
-                //     dispatch({
-                //         type: SAVE_MOVIE,
-                //         payload: "",
-                //     })
-                // }, 300);
-
             })
             .catch(err => {
                 console.error(err);

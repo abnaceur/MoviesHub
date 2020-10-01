@@ -14,6 +14,8 @@ data/
 client/build
 .data
 
+server/uploads
+
 # misc
 .DS_Store
 .env.local
