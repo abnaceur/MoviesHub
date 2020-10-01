@@ -11,8 +11,8 @@ import MovieDetails from './components/movieDetails/movieDetails';
 import AuthRoute from './components/midlleware/RouteAuth';
 import Logout from './components/Logout/Logout';
 
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 import {
   BrowserRouter as Router,
@@ -28,13 +28,12 @@ const App = () => {
         <MainNavigation />
         <Switch>
           <Route exact path="/" component={Auth} />
-          <AuthRoute exact path="/movies" component={Movies} />
+          <Route exact path="/movies" component={Movies} />
           <Route exact path="/unknowPassword" component={UnknowPassword} />
           <Route exact path="/resetPassword" component={ResetPassword} />
-          <AuthRoute exact path="/profil" component={UpdateProfile} />
-          <AuthRoute exact path="/videodetails" component={MovieDetails} />
+          <Route exact path="/profil" component={UpdateProfile} />
           {/* <AuthRoute exact path="/lector" component={Lector} /> */}
-          <AuthRoute exact path="/logout" component={Logout} />
+          <Route exact path="/logout" component={Logout} />
           <Redirect to="/" />
         </Switch>
         <Footer />
