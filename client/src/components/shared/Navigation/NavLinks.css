@@ -67,3 +67,10 @@ span.material-icons.MuiIcon-root.navBouton:hover {
     flex-direction: row;
   }
 }
+
+.image_profil {
+  position: relative;
+  width: 3em;
+  top: 5px;
+  border-radius: 50px;
+}

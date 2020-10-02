@@ -38,3 +38,25 @@
 .tags a.info{color:#FFF;background-color:#5BC0DE;border-color:#46B8DA}
 .tags a.warning{color:#FFF;background-color:#F0AD4E;border-color:#EEA236}
 .tags a.danger{color:#FFF;background-color:#D9534F;border-color:#D43F3A}
+
+.img-responsive { 
+    position: relative;
+    width: 4em;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.box-comment {
+    display: flex;
+    margin-bottom: 10px;
+}
+.username {
+    display: flex;
+}
+
+.text-muted {
+    margin-left: 10px;
+    font-weight: 400;
+    font-size: 10px;
+    padding-top: 4px;
+}

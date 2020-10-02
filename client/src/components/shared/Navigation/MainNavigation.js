@@ -40,19 +40,7 @@ const MainNavigation = (props) => {
         </h1>
         <nav className="main-navigation__header-nav">
           <NavLinks />
-        </nav>
-
-        <Switch
-          checked={state.checkedA}
-          onChange={handleChange}
-          name="checkedA"
-          inputProps={{ "aria-label": "secondary checkbox" }}
-        />
-
-        <button
-          className="main-navigation__menu-btn"
-          onClick={OpenDrawerHandler}
-        ></button>
+        </nav> 
       </MainHeader>
     </React.Fragment>
   );

@@ -69,7 +69,6 @@ db.on('error', function (err) {
   console.log('Error while connecting to database: ', err)
 });
 
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

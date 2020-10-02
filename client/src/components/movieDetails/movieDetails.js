@@ -303,14 +303,16 @@ class MovieDetails extends React.Component {
                       return (
                         <div class="box-footer box-comments col-md-12">
                           <div className="box-comment">
-                            {/* <img className="img-circle img-sm" src={
+                            <img className="img-responsive" src={
                               cm.userImage && cm.userImage.toString().substring(0, 5) === 'https' ?
                                 cm.userImage
-                                : process.env.REACT_APP_API_URL + "/" + cm.userImage} alt="User Image" /> */}
+                                : cm.userImage !== "undefined" ? 
+                                process.env.REACT_APP_API_URL + "/" + cm.userImage : 
+                                "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"} alt="User Image" />
 
                             <div className="comment-text">
                               <span className="username">
-                                {cm.userFullName}
+                                {cm.userFullName} {" "}
                                 <span className="text-muted pull-right">{" "}{moment().format('ll', cm.dateOfCreation)}</span>
                               </span>
                               {cm.commentContent}
@@ -325,11 +327,6 @@ class MovieDetails extends React.Component {
 
                   <div className="box-footer col-md-12">
                     <form>
-                      {/* <img className="img-responsive img-circle img-sm" src={
-                        this.state.imageUrl && this.state.imageUrl.toString().substring(0, 5) === 'https' ?
-                          this.state.imageUrl
-                          : process.env.REACT_APP_API_URL + "/" + this.state.imageUrl} alt="Alt Text" /> */}
-
                       <div style={{ paddingTop: '30px', paddingBottom: '150px' }} className="img-push">
                         <textarea col="10" row="22" type="text" className="form-control input-sm" name="commentContent" onChange={this.handleFormSubmit} placeholder="Press enter to post comment" />
                         <button onClick={(e) => { this.handleCommentSave(e) }} style={{ 'marginTop': '20px' }} className="pull-right btn btn-primary">Send</button>
