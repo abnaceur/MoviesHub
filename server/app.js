@@ -19,7 +19,7 @@ var app = express();
 // Display API Docs
 app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-//Use hamlet 
+//Use hamlet
 app.use(helmet());
 
 // Initialize passprt
@@ -29,12 +29,10 @@ app.use(passport.initialize());
 app.use(logger('dev'));
 
 // important if behind a proxy to ensure client IP is passed to req.ip
-//app.enable('trust proxy'); 
-
+//app.enable('trust proxy');
 
 //Map global promise
 mongoose.Promise = global.Promise;
-
 
 // Body parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,16 +40,16 @@ app.use(bodyParser.json());
 
 // Fix CORS errors
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  );
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, PATCH, DELETE');
-    return res.status(200).json({});
-  };
-  next();
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header(
+		'Access-Control-Allow-headers',
+		'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+	);
+	if (req.method === 'OPTIONS') {
+		res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, PATCH, DELETE');
+		return res.status(200).json({});
+	}
+	next();
 });
 
 // Routes
@@ -61,12 +59,12 @@ var moviesRouter = require('./api/routes/movie');
 
 // Open connection to the database
 db.once('open', function () {
-  console.log('Connected to mongodb!');
+	console.log('Connected to mongodb!');
 });
 
 // Catch errors on database connection failure
 db.on('error', function (err) {
-  console.log('Error while connecting to database: ', err)
+	console.log('Error while connecting to database: ', err);
 });
 
 app.use(logger('dev'));
@@ -83,18 +81,18 @@ app.use('/api/v1/movies', moviesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404));
+	next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.send('error ' + err);
+	// render the error page
+	res.status(err.status || 500);
+	res.send('error ' + err);
 });
 
 module.exports = app;
