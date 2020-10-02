@@ -38,6 +38,9 @@ const NavLinks = (props) => {
               <Icon className="navBouton">power_settings_new</Icon>
             </NavLink>
           </li>
+          <li>
+          <div id="google_translate_element"></div> 
+          </li>
         </ul> : null}
     </>
   );
