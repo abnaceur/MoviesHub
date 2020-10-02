@@ -11,7 +11,6 @@ const moviesContraoller = require('../controllers/moviesContraoller');
 */
 router.post('/save/:userId', authCkeck, moviesContraoller.saveMovieCOntroller)
 
-
 /*
 ** [POST] Route:"/movies/stream/:magnet/:file_name" [USED]
 */

@@ -13,4 +13,9 @@ router.post('/register', upload.any(), userController.registerNewUserControl);
 */
 router.post('/loginform', userController.loginformUserControl);
 
+/*
+** [POST] Route:"/users/resetpwd" [USED]
+*/
+router.post('/resetpwd', userController.resetpwdControl);
+
 module.exports = router;
