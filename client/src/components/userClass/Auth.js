@@ -1,5 +1,6 @@
 import React, { useState, Button } from "react";
 import LogoFacebook from '../../assets/logo/Logo-Facebook-rond.png';
+import LogoGmail from '../../assets/logo/gmail.png';
 import Logo42 from "../../assets/logo/logo_42.jpg";
 import LeftArrow from "../../assets/logo/left-arrow.png";
 import RightArrow from "../../assets/logo/right-arrow.png";
@@ -156,7 +157,7 @@ class Auth extends React.Component {
                 <div className="social-container">
                   <a href="http://localhost:3000/auth/google"  className="social">
                     <img
-                      src={LogoFacebook}
+                      src={LogoGmail}
                       className="icon"
                       alt="login with facebook"
                     />
@@ -234,7 +235,7 @@ class Auth extends React.Component {
                 <div className="social-container">
                   <a href="http://localhost:3000/auth/google"  className="social">
                     <img
-                      src={LogoFacebook}
+                      src={LogoGmail}
                       className="icon"
                       alt="login with facebook"
                     />
