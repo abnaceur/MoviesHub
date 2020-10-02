@@ -3,6 +3,8 @@ var router = express.Router();
 var FortyTwoStrategy = require('passport-42').Strategy;
 var passport = require('passport');
 const oauth2Controller = require('../../api/controllers/oauth2Controller')
+const keys = require('../../config/googleOath2');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -17,6 +19,25 @@ passport.deserializeUser((user, done) => {
 router.get('/', function (req, res, next) {
   res.send('<h1>TEsting</h1>');
 });
+
+
+// Googe Oauth2
+passport.use(new GoogleStrategy({
+  clientID: '126083549317-qp9hldsum65vt2f62beb62dvudteauh5.apps.googleusercontent.com',
+  clientSecret: 'eaAoheM6TzV-QLvKJuVKKXeu',
+  callbackURL: '/auth/google/callback'
+}, (accessToken, refreshToken, profile, done) => {
+  done(null, profile);
+}))
+
+
+router.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
+
+// Google Oauth2 callback url
+router.get('/auth/google/callback', passport.authenticate('google'), oauth2Controller.googleOauth2);
+
 
 
 // 42

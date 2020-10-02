@@ -154,7 +154,7 @@ class Auth extends React.Component {
               <form onSubmit={this.handlFormSubmit} encType="multipart/form-data">
                 <h1>Create User</h1>
                 <div className="social-container">
-                  <a href="./" className="social">
+                  <a href="http://localhost:3000/auth/google"  className="social">
                     <img
                       src={LogoFacebook}
                       className="icon"
@@ -232,7 +232,7 @@ class Auth extends React.Component {
               <form onSubmit={this.handlFormSubmit} encType="multipart/form-data">
                 <h1>Sign in</h1>
                 <div className="social-container">
-                  <a href="./" className="social">
+                  <a href="http://localhost:3000/auth/google"  className="social">
                     <img
                       src={LogoFacebook}
                       className="icon"
