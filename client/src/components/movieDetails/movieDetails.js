@@ -102,7 +102,7 @@ class MovieDetails extends React.Component {
     }
 
     materialDetailsTmp = await saveMovieDetails(this.state.materialDetails);
-    
+
     if (materialDetailsTmp.data !== undefined && materialDetailsTmp.code === 200) {
       this.setState({
         videoUrlLink: materialDetailsTmp.data.videoUrlLink,
@@ -140,27 +140,22 @@ class MovieDetails extends React.Component {
   videoPlayer() {
     if (this.state.videoUrlLink !== "") {
 
-      return <div className={styles.component}>
-
-        <ul className={styles.videoList}>
-          <li className={styles.videoListItem}>
-            <ReactPlayer
-              url={['http://localhost:3000/api/v1/movies/stream/' + this.state.videoUrlLink]}
-              className='react-player'
-              controls
-              width='100%'
-              height='100%'
-              config={{
-                file: {
-                  attributes: {
-                    crossOrigin: 'true'
-                  },
-                  tracks: this.formatSubtitleTracker(this.state.subTitlesArr)
-                }
-              }}
-            />
-          </li>
-        </ul>
+      return <div className="vd-player">
+        <ReactPlayer
+          url={['http://localhost:3000/api/v1/movies/stream/' + this.state.videoUrlLink]}
+          className='react-player'
+          controls
+          width='80%'
+          height='80%'
+          config={{
+            file: {
+              attributes: {
+                crossOrigin: 'true'
+              },
+              tracks: this.formatSubtitleTracker(this.state.subTitlesArr)
+            }
+          }}
+        />
       </div>
     }
   }
@@ -169,131 +164,83 @@ class MovieDetails extends React.Component {
   render() {
     return (
       <section className="content">
-        <div className="row">
-          <div className="col-md-12">
-            <div className="box box-primary" id="fixMarginTop">
-              <div className="box-header with-border">
-                <h3 className="box-title">Movie details</h3>
-              </div>
-
-              <div className="box-body">
+        <div className="box1" id="fixMarginTop">
+          <div className="col-md-6 tab-content">
+            <article className="panel panel-default">
+              <div className="panel-body">
                 <div className="row">
-                  <div className="col-md-6 tab-content">
-                    <div
-                      role="tabpanel"
-                      className="tab-pane active"
-                      id="seite1"
-                    >
-                      <article className="panel panel-default">
-                        <div className="panel-body">
-                          <div className="row">
-                            <img
-                              className="img-responsive center-block"
-                              src={
-                                this.state.materialDetails.large_cover_image
-                              }
-                              alt="pic holder"
-                            />
-                            <br></br>
+                  <img
+                    className="img-responsive center-block"
+                    src={
+                      this.state.materialDetails.large_cover_image
+                    }
+                    alt="pic holder"
+                  />
+                  <br></br>
+                </div>
+              </div>
+            </article>
+          </div>
 
-
-                          </div>
-                        </div>
-                      </article>
-                    </div>
+          <div className="col-md-6 tab-content">
+            <h1>      {this.state.materialDetails.title}
+            </h1>
+            <article className="panel1">
+              <div className="panel-body">
+                <div className="row">
+                  <div className="textbox">
+                    <b>Rating :</b>
+                    {this.state.materialDetails.rating}
+                    <br></br>
+                    <b>Year :</b>{" "} {this.state.materialDetails.year}
                   </div>
 
-                  <div className="col-md-6 tab-content">
-                    <div
-                      role="tabpanel"
-                      className="tab-pane active"
-                      id="seite1"
-                    >
-                      <article className="panel panel-default">
-                        <header className="panel-heading">
-                          <h1 className="text-muted text-center">
-                          </h1>
-                        </header>
-                        <div className="panel-body">
-                          <div className="row">
-                            <div className="textbox">
-                              <b>Rating :</b>
-                              {this.state.materialDetails.rating}
-                              <br></br>
-                              <b>Year :</b>{" "} {this.state.materialDetails.year}
-                            </div>
-
-                            <div className="textbox">
-                              <b>Genre :</b>
-                              {this.state.materialDetails.genres && this.state.materialDetails.genres.length > 0 ?
-                                this.state.materialDetails.genres.map((g, i) => {
-                                  return <div key={i} class="tags">
-                                    <a href="#" class="success">{g}</a>
-                                  </div>
-                                }) : ""}
-
-                            </div>
-
-                            <div className="textbox">
-                              <b>Description :</b>{" "}
-                              {this.state.materialDetails.description_full}
-                            </div>
-
-
-                            <br></br>
-                            <b>Play movie :</b>
-                            <br></br>
-                            <div
-                              data-toggle="modal"
-                              data-target='#openModalMovie'
-                              id="modal-default-toggle"
-                              className="col-md-12 image-grid-item"
-                              className="col-md-12 image-grid-item"
-                            >
-                              <div
-                                style={{ backgroundColor: "light-blue" }}
-                                className="image-grid-cover"
-                              >
-                                <span className="image-grid-clickbox"></span>
-                                <span className="cover-wrapper">
-                                  {this.state.materialDetails.title} <br></br>
-                                  {this.state.videoUrlLink === "" ? "loading ..." : ""}
-                                </span>
-                              </div>
-                            </div>
-
-                          </div>
+                  <div className="textbox">
+                    <b>Genre :</b>
+                    {this.state.materialDetails.genres && this.state.materialDetails.genres.length > 0 ?
+                      this.state.materialDetails.genres.map((g, i) => {
+                        return <div key={i} class="tags">
+                          <a href="#" class="success">{g}</a>
                         </div>
-                      </article>
-                    </div>
+                      }) : ""}
+
+                  </div>
+
+                  <div className="textbox">
+                    <b>Description :</b>{" "}
+                    {this.state.materialDetails.description_full}
+                  </div>
+
+
+                  <br></br>
+                  <b>Play movie</b>
+                  <br></br>
+
+                  <div
+                    style={{ backgroundColor: "light-blue" }}
+                    className="image-grid-cover"
+                  >
+                    <span className="image-grid-clickbox"></span>
+                    <span className="cover-wrapper">
+                      Movie {this.state.materialDetails.title} <br></br>
+                      {this.state.videoUrlLink === "" ? "loading ..." : ""}
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
+
 
         <div className="row">
           <div className="col-md-12">
             <div className="box box-primary">
               <div className="box-body">
                 <div className="row">
-                  <div>
-                    <div
-                      className="modal fade"
-                      id="openModalMovie"
-                    >
-                      <div className="modal-dialog" id="opnVideo">
-                        <div className="modal-content" id="modal-contentStyle">
-                          <div className="modal-body">
-                            {this.videoPlayer()}
-                          </div>
-                          <br></br>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {this.videoPlayer()}
                 </div>
+
                 <div className="row">
                   <div className="box-header with-border">
                     <h3 className="box-title">Leave a comment</h3>
@@ -303,12 +250,12 @@ class MovieDetails extends React.Component {
                       return (
                         <div class="box-footer box-comments col-md-12">
                           <div className="box-comment">
-                            <img className="img-responsive" src={
+                            <img className="img-responsive1" src={
                               cm.userImage && cm.userImage.toString().substring(0, 5) === 'https' ?
                                 cm.userImage
-                                : cm.userImage !== "undefined" ? 
-                                process.env.REACT_APP_API_URL + "/" + cm.userImage : 
-                                "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"} alt="User Image" />
+                                : cm.userImage !== "undefined" ?
+                                  process.env.REACT_APP_API_URL + "/" + cm.userImage :
+                                  "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"} alt="User Image" />
 
                             <div className="comment-text">
                               <span className="username">

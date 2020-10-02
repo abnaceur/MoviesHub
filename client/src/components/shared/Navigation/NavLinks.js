@@ -24,21 +24,19 @@ const NavLinks = (props) => {
           </li>
           <li>
             <NavLink to="/profil">
-              <Icon className="navBouton">account_circle</Icon>
+              {/* <Icon className="navBouton">account_circle</Icon> */}
+              <img
+              className="image_profil"
+              src={imgProfil !== "undefined" ? imgProfil 
+                : "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"}
+              alt="Profile"
+            />
             </NavLink>
           </li>
           <li>
             <NavLink to="/logout">
               <Icon className="navBouton">power_settings_new</Icon>
             </NavLink>
-          </li>
-          <li>
-            <img
-              className="image_profil"
-              src={imgProfil !== "undefined" ? imgProfil 
-                : "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"}
-              alt="Profile"
-            />
           </li>
         </ul> : null}
     </>
