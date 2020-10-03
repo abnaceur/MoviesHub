@@ -1,26 +1,38 @@
 .Update_information {
-  margin: 120px auto;
-  width: 600px;
+  margin: 75px auto;
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .Update_password {
-  margin: 120px auto;
+  margin: 75px auto;
   width: 600px;
 }
 
+form.avatar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .Update_avatar {
-  margin: 120px auto;
+  margin: 75px auto;
   width: 600px;
+  /* display: flex;
+  flex-direction: row-reverse; */
 }
 
 .image_avatar {
   border-radius: 50%;
   width: 100px;
+  margin: 10px;
 }
 
 .container_update {
   background-color: #1e1e1e;
-  display: block;
+  /* display: block; */
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
@@ -29,11 +41,6 @@
   /* height: 400px; */
   max-width: 100%;
   margin: 94px auto;
-}
-.Update_information {
-  display: block;
-  width: 70%;
-  margin: 0 auto;
 }
 
 .center {
@@ -47,5 +54,33 @@
 h3 {
   text-align: center;
   letter-spacing: 3px;
-  margin-bottom: 60px;
+}
+
+button.disketteBouton {
+  border: none;
+  color: none;
+  background-color: #2f808b;
+}
+button.disketteBouton:hover {
+  border: none;
+  color: #2f808b;
+}
+
+span.material-icons.MuiIcon-root.savedisket:hover {
+  color: #2f808b;
+}
+
+span.material-icons.MuiIcon-root.change-image:hover {
+  color: #2f808b;
+}
+
+button.penBouton {
+  border: none;
+  color: none;
+  background-color: #2f808b;
+}
+
+button.penBouton:hover {
+  border: none;
+  color: #2f808b;
 }

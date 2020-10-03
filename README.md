@@ -6,6 +6,7 @@ HYPERTUBE is a plateform for video streaming.
 
 ## Team
 
+<<<<<<< Updated upstream
 - akhoucha akhoucha@student.42.fr
 - gucalvi gucalvi@student.42.fr
 - mbengtss mbengtss@student.42.fr
@@ -22,6 +23,13 @@ HYPERTUBE is a plateform for video streaming.
 - Whenever a movie is selected to play, it will be downloaded from the server
   and streamed on the web player at the same time;
 - Unwatched movies will be erased from the database after 1 month.
+=======
+akhoucha gucalvi mbengtss yiwang
+
+## Project's Goals and objectives
+
+--
+>>>>>>> Stashed changes
 
 ## Technologies :
 
