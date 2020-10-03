@@ -10,6 +10,8 @@ const helmet = require('helmet');
 let mongoose = require('mongoose');
 const swaggerDocument = require('./docs/openApiDocumentation/BasicInformation');
 const swaggerUi = require('swagger-ui-express');
+var schedule = require('node-schedule');
+var commands = require('./commands/removeMovieByDate');
 
 const passport = require('passport');
 
@@ -93,6 +95,14 @@ app.use(function (err, req, res, next) {
 	// render the error page
 	res.status(err.status || 500);
 	res.send('error ' + err);
+});
+
+
+// Schedule corn like tab
+// [ENCH MINUT FOR TEST] var j = schedule.scheduleJob('* * * * *', function () {
+var j = schedule.scheduleJob('* * 1 * *', function () {
+	console.log('Monthly cron tab like to remove not seen movies for one month !');
+	commands.removeMovieByDate()
 });
 
 module.exports = app;
