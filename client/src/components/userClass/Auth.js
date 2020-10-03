@@ -52,6 +52,13 @@ class Auth extends React.Component {
       history.push("/movies");
       window.location.href = "/movies";
     }
+
+    let token = localStorage.getItem("token");
+    if (token) {
+      history.push("/movies");
+      window.location.href = "/movies";
+    }
+    
   }
 
   fireNotificationAlert(response) {

@@ -6,8 +6,7 @@ import Icon from "@material-ui/core/Icon";
 const NavLinks = (props) => {
   let token = localStorage.getItem("token");
   let imgProfil = localStorage.getItem('imageUrl');
-  
-  console.log("imgProfil  :", imgProfil)
+
   return (
     <>
       {token ?
@@ -18,17 +17,16 @@ const NavLinks = (props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/favorite">
-              <Icon className="navBouton">stars</Icon>
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/profil">
               {/* <Icon className="navBouton">account_circle</Icon> */}
               <img
               className="image_profil"
-              src={imgProfil !== "undefined" ? imgProfil 
-                : "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"}
+              src={typeof imgProfil.name !== "string" ?
+                  imgProfil.indexOf("https") === -1 ?
+                    "http://localhost:3000/" + imgProfil : imgProfil.indexOf("https") > 1 ?
+                      imgProfil :
+                      "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
+                  : null}
               alt="Profile"
             />
             </NavLink>

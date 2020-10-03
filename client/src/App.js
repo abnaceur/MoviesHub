@@ -28,12 +28,11 @@ const App = () => {
         <MainNavigation />
         <Switch>
           <Route exact path="/" component={Auth} />
-          <Route exact path="/movies" component={Movies} />
+          <AuthRoute exact path="/movies" component={Movies} />
           <Route exact path="/unknowPassword" component={UnknowPassword} />
           <Route exact path="/resetPassword" component={ResetPassword} />
-          <Route exact path="/videodetails" component={MovieDetails} />
-          <Route exact path="/profil" component={UpdateProfile} />
-          {/* <AuthRoute exact path="/lector" component={Lector} /> */}
+          <AuthRoute exact path="/videodetails" component={MovieDetails} />
+          <AuthRoute exact path="/profil" component={UpdateProfile} />
           <Route exact path="/logout" component={Logout} />
           <Redirect to="/" />
         </Switch>

@@ -14,7 +14,7 @@ const langsFormat = require('./langs');
 const uri = 'https://www.yts-subs.com/movie-imdb';
 const downloadUri = 'https://yifysubtitles.org';
 const langK = Object.keys(langsFormat);
-const langV = langK.map(i => langsFormat[i]);
+const langV = langK.map(i => langsFormat[i]); 
 
 const formatLangLong = lang => langV[langK.indexOf(lang)];
 const formatLangShort = lang => langK[langV.indexOf(lang)];
@@ -82,7 +82,6 @@ const downloadFormat = format => (lang, url, link) => {
             entry.pipe(fs.createWriteStream(fullPath)) :
             entry.pipe(srt2vtt()).pipe(fs.createWriteStream(fullPath));
         }
-
         entry.autodrain();
       })
     )

@@ -136,7 +136,6 @@ class MovieDetails extends React.Component {
     return data;
   }
 
-
   videoPlayer() {
     if (this.state.videoUrlLink !== "") {
 
@@ -159,7 +158,6 @@ class MovieDetails extends React.Component {
       </div>
     }
   }
-
 
   render() {
     return (
@@ -232,7 +230,6 @@ class MovieDetails extends React.Component {
           </div>
         </div>
 
-
         <div className="row">
           <div className="col-md-12">
             <div className="box box-primary">
@@ -281,7 +278,6 @@ class MovieDetails extends React.Component {
                     </form>
                   </div>
                 </div>
-
 
               </div>
             </div>

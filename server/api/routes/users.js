@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 const upload = require('../middleware/uploadFiles');
+const authCkeck = require("../middleware/check-auth");
 
 /*
 ** [POST] Route:"/users/signup" [USED]
@@ -18,10 +19,14 @@ router.post('/loginform', userController.loginformUserControl);
 */
 router.post('/resetpwd', userController.resetpwdControl);
 
-
 /*
 ** [POST] Route:"/users/resetpwd" [USED]
 */
 router.get('/:id', userController.getUserInformation);
+
+/*
+** [PUT] Route:"/users/profile" [USED]
+*/
+router.put('/profile', upload.any(), authCkeck, userController.updateUserProfile)
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const Movie = require('../../models/movie');
 const View = require('../../models/views');
 const movieClass = require('../../classes/movieClass');
-let AbnTorrent = require('abntorrent')
+let AbnTorrent = require('abntorrent');
 const mongoose = require('mongoose');
 const yifysubtitles = require('../../thirdparty/yifysubtitlesAbn/index');
 
