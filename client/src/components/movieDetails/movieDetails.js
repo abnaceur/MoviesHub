@@ -247,12 +247,19 @@ class MovieDetails extends React.Component {
                       return (
                         <div class="box-footer box-comments col-md-12">
                           <div className="box-comment">
-                            <img className="img-responsive1" src={
-                              cm.userImage && cm.userImage.toString().substring(0, 5) === 'https' ?
-                                cm.userImage
-                                : cm.userImage !== "undefined" ?
-                                  process.env.REACT_APP_API_URL + "/" + cm.userImage :
-                                  "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"} alt="User Image" />
+                            <img className="img-responsive1" src={typeof cm.userImage.name !== "string" ?
+                  cm.userImage.indexOf("https") === -1 ?
+                    "http://localhost:3000/" + cm.userImage : cm.userImage.indexOf("https") > 1 ?
+                    cm.userImage :
+                      "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
+                  : null}
+                              // cm.userImage && cm.userImage.toString().substring(0, 5) === 'https' ?
+                              //   cm.userImage
+                              //   : cm.userImage !== "undefined" ?
+                              //     process.env.REACT_APP_API_URL + "/" + cm.userImage :
+                              //     "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"} 
+                                  
+                                  alt="User Image" />
 
                             <div className="comment-text">
                               <span className="username">

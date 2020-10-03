@@ -145,3 +145,18 @@ button:hover {
   transform: rotate(360deg);
 }
 }
+
+.badge { 
+  position: relative;
+  background-color: rgb(214, 230, 123);
+  color: black;
+  padding: 4px 4px;
+  width: 70px;
+}
+
+.card-img {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px;
+  justify-content: center;
+}

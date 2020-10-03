@@ -248,14 +248,14 @@ class Movies extends React.Component {
         let query = "&sort_by=rating"
         this.setState({ genres: genres });
         let allMoviesByRatings = await getMoviesByRatings(query, this.state.pageMovie);
-        // let getMovieViews = await getMovieViewsByUser(this.state.userId);
+        let getMovieViews = await getMovieViewsByUser(this.state.userId);
         this.getAllMoviesSetup(allMoviesByRatings)
 
-        // if (getMovieViews !== undefined && getMovieViews.code === 200) {
-        //     this.setState({
-        //         allUserViewedMovies: getMovieViews.data,
-        //     })
-        // }
+        if (getMovieViews !== undefined && getMovieViews.code === 200) {
+            this.setState({
+                allUserViewedMovies: getMovieViews.data,
+            })
+        }
 
         // if (this.state.selectedCategory !== "")
         //     this.setState({
@@ -282,7 +282,8 @@ class Movies extends React.Component {
         }
 
         if (check === 1)
-            return <span style={{ 'width': '60px', 'top': '20px', 'left': '30px' }} class="badge badge-info"> Viewed</span>
+            return <span 
+            class="badge badge-info"> Viewed</span>
     }
 
     render() {
