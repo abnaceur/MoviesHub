@@ -4,6 +4,9 @@ import "../../userClass/Auth.css";
 import { getUserInfoService } from '../../shared/services/userServices/getUserInfoService'
 import { updateUserInfoService } from '../../shared/services/userServices/updateUserInfoService'
 
+import PasswordStrengthMeter from './PasswordStrengthMeter';
+import zxcvbn from 'zxcvbn';
+
 import { ToastContainer } from 'react-toastify';
 const customNotification = require('../../utils/notification');
 
@@ -71,8 +74,15 @@ class UpdateProfile extends React.Component {
 
   valdateFormData() {
     let validateEmail = new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g);
+    const testedResult = zxcvbn(this.state.password);
 
-    if (!validateEmail.test(this.state.email)) {
+    if (this.state.password.length < 8 && this.state.password !== "") {
+      customNotification.fireNotification("warning", "Password must contain at least 8 characters")
+      return false;
+    } else if (parseInt(testedResult.score) < 3 && this.state.password !== "") {
+      customNotification.fireNotification("error", "Password must be strong")
+      return false;
+    } else if (!validateEmail.test(this.state.email)) {
       customNotification.fireNotification("warning", "Email not valid")
       return false;
     }
@@ -88,8 +98,8 @@ class UpdateProfile extends React.Component {
         localStorage.setItem('imageUrl', response.imageUrl);
         customNotification.fireNotification("success", response.msg);
         setTimeout(() => {
-          window.location.href = window.location.href; 
-        }, 400)
+          window.location.href = window.location.href;
+        }, 1000)
       }
       if (response && response.code === 500)
         customNotification.fireNotification("error", response.msg);
@@ -98,7 +108,6 @@ class UpdateProfile extends React.Component {
 
   render() {
     const { lastname, firstname, email, profileImg, username, password } = this.state;
-    console.log("profileImg :", profileImg);
 
     return (
       <React.Fragment>
@@ -183,6 +192,7 @@ class UpdateProfile extends React.Component {
               onChange={this.handleChange}
               required={true}
             />
+            <PasswordStrengthMeter password={password} />
 
             <button onClick={(e) => this.updateProfileInformation(e)} >Update information</button>
           </div>
