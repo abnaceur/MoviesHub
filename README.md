@@ -7,6 +7,7 @@ HYPERTUBE is a plateform for video streaming.
 ## Team
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - akhoucha akhoucha@student.42.fr
 - gucalvi gucalvi@student.42.fr
 - mbengtss mbengtss@student.42.fr
@@ -23,6 +24,13 @@ HYPERTUBE is a plateform for video streaming.
 - Whenever a movie is selected to play, it will be downloaded from the server
   and streamed on the web player at the same time;
 - Unwatched movies will be erased from the database after 1 month.
+=======
+akhoucha gucalvi mbengtss yiwang
+
+## Project's Goals and objectives
+
+--
+>>>>>>> Stashed changes
 =======
 akhoucha gucalvi mbengtss yiwang
 
@@ -146,10 +154,17 @@ Pour generer la bdd les differentes possibilites:
 mysql -u hypertube -p hypertube < hypertube.sql
 
 UNIX shell> mysql hypertube < hypertube.sql
+<<<<<<< Updated upstream
 
 The same in Windows command prompt: mysql -p -u hypertube hypertube <
 hypertube.sql
 
+=======
+
+The same in Windows command prompt: mysql -p -u hypertube hypertube <
+hypertube.sql
+
+>>>>>>> Stashed changes
 PowerShell C:\> cmd.exe /c "mysql -u root -p hypertube < hypertube.sql"
 
 MySQL command line mysql> use hypertube; mysql> source hypertube.sql;
