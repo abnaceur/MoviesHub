@@ -9,8 +9,9 @@ import {
 import { useForm } from "../../shared/hooks/form-hook";
 import Input from "../../shared/FormElements/Input";
 import "../../userClass/Auth.css";
-// import "./Profile.css";
+import "./UpdateProfile.css";
 import Icon from "@material-ui/core/Icon";
+import { Button } from "@material-ui/core";
 
 const UpdateProfile = () => {
   const [loadedUser, setLoadedUser] = useState();
@@ -89,14 +90,14 @@ const UpdateProfile = () => {
                 alt="Profile"
               />
               <div>
-                <button className="disketteBouton">
+                <Button className="disketteBouton">
                   <Icon className="savedisket"> save</Icon>
-                </button>
+                </Button>
               </div>
               <div>
-                <button type="button" className="penBouton">
+                <Button type="button" className="penBouton">
                   <Icon className="change-image"> create</Icon>
-                </button>
+                </Button>
               </div>
             </form>
           </div>
