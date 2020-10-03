@@ -18,4 +18,10 @@ router.post('/loginform', userController.loginformUserControl);
 */
 router.post('/resetpwd', userController.resetpwdControl);
 
+
+/*
+** [POST] Route:"/users/resetpwd" [USED]
+*/
+router.get('/:id', userController.getUserInformation);
+
 module.exports = router;

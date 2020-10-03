@@ -1,81 +1,64 @@
 import React, { useState, useEffect } from "react";
-import { useHttpClient } from "../../shared/hooks/http-hook";
 import UpdatePassword from "./UpdatePassword";
-import LoadingSpinner from "../../shared/UIElements/LoadingSpinner";
-import {
-  VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH,
-} from "../../shared/util/validators";
-import { useForm } from "../../shared/hooks/form-hook";
-import Input from "../../shared/FormElements/Input";
 import "../../userClass/Auth.css";
-import "./UpdateProfile.css";
 import Icon from "@material-ui/core/Icon";
 import { Button } from "@material-ui/core";
+import { getUserInfoService } from '../../shared/services/userServices/getUserInfoService'
 
-const UpdateProfile = () => {
-  const [loadedUser, setLoadedUser] = useState();
-  const { isLoading, sendRequest } = useHttpClient();
-  const [formState, inputHandler] = useForm(
-    {
-      username: {
-        value: "",
-        isValid: false,
-      },
-      email: {
-        value: "",
-        isValid: false,
-      },
-      fistname: {
-        value: "",
-        isValid: false,
-      },
-      lastname: {
-        value: "",
-        isValid: false,
-      },
-    },
-    false
-  );
+class UpdateProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      profileImg: "",
+      lastname: "",
+      firstname: "",
+      email: "",
+      password: "",
+    }
 
-  const updateProfile = async () => {
-    try {
-      const responseData = await sendRequest(
-        `http://localhost:5000/api/user/update`,
-        "POST",
-        JSON.stringify({
-          username: formState.inputs.username.value,
-          email: formState.inputs.email.value,
-          firstname: formState.inputs.firstname.value,
-          lastname: formState.inputs.lastname.value,
-        }),
-        {
-          "Content-Type": "application/json",
-        }
-      );
-      setLoadedUser(responseData.user);
-    } catch (err) {}
-  };
+    this.getProfileInformation = this.getProfileInformation.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        // const responseData = await sendRequest(
-        //   // `http://localhost:5000/api/user/3`
-        // );
-        // console.log(responseData);
-        let result = {
-          username: "Sakala",
-          email: "melchiorbengtsson@gmail.com",
-          firstname: "Melchior",
-          lastname: "Bengtsson",
-        };
-        setLoadedUser(result);
-      } catch (err) {}
-    };
-    fetchComments();
-  }, [sendRequest]);
-  if (loadedUser && !isLoading) {
+  // Get profile information
+  async getProfileInformation() {
+    let userId = localStorage.getItem('userId');
+    console.log("userId :", userId);
+    let response = await getUserInfoService(userId)
+    if (response.code === 200) {
+      this.setState({
+        username: response.data.pseudonyme,
+        profileImg: response.data.imageUrl,
+        lastname: response.data.familyName,
+        firstname: response.data.givenName,
+        email: response.data.email,
+      })
+    } else alert("An error occured")
+  }
+
+  componentWillMount () {
+    this.getProfileInformation();
+  }
+
+  handleChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    if (target.type === "file") {
+      this.setState({
+        profileImg: target.files[0]
+      });
+    } else {
+      this.setState({
+        [name]: value
+      });
+    }
+  }
+
+  render() {
+    const { lastname,firstname, email, profileImg, username } = this.state;
+    
     return (
       <React.Fragment>
         <div className="container_update">
@@ -104,66 +87,47 @@ const UpdateProfile = () => {
 
           <div className="Update_information">
             <h3>Update information</h3>
+
             <input
               id="username"
-              element="input"
+              value={username}
+              name="username"
               type="text"
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
               label="Username"
-              placeholder={loadedUser.username}
-              errorText="Please enter a valid Username. (2 characters min.)"
-              initialValue={loadedUser.username}
-              initialValid={true}
-              onInput={inputHandler}
+              onChange={this.handleChange}
             />
+
             <input
               id="email"
-              element="input"
+              name="email"
+              value={email}
               type="text"
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
               label="Email"
-              placeholder={loadedUser.email}
-              errorText="Please enter a valid Email."
-              initialValue={loadedUser.email}
-              initialValid={true}
-              onInput={inputHandler}
-            />
+              onChange={this.handleChange}
+              />
             <input
               id="firstname"
-              element="input"
+              value={firstname}
+              name="firstname"
               type="text"
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
               label="Firstname"
-              placeholder={loadedUser.firstname}
-              errorText="Please enter a firstname. (2 characters min.)"
-              initialValue={loadedUser.firstname}
-              initialValid={true}
-              onInput={inputHandler}
-            />
+              onChange={this.handleChange}
+              />
+
             <input
               id="lastname"
-              element="input"
+              value={lastname}
               type="text"
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MINLENGTH(2)]}
+              name="lastname"
               label="Lastname"
-              placeholder={loadedUser.lastname}
-              errorText="Please enter a lastname. (2 characters min.)"
-              initialValue={loadedUser.lastname}
-              initialValid={true}
-              onInput={inputHandler}
-            />
-            <button onClick={updateProfile}>Update information</button>
+              onChange={this.handleChange}
+             />
+
+            <button>Update information</button>
           </div>
           <UpdatePassword />
         </div>
       </React.Fragment>
-    );
-  } else {
-    return (
-      <div className="center">
-        <LoadingSpinner />
-        User not Found ?
-      </div>
     );
   }
 };

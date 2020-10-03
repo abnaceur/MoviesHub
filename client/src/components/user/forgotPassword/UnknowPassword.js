@@ -46,7 +46,6 @@ class ForgotPass extends React.Component {
 		// Validate
 		// Send to the server POST API
 		// FIre a nof=tif iwth reponse
-
 		return (
 			<React.Fragment>
 				<ToastContainer />
