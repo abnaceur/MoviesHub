@@ -2,7 +2,7 @@ import React from 'react';
 import '../Auth.css';
 import './UnknowPassword.css';
 import { ToastContainer } from 'react-toastify';
-
+import { resetPasswordService } from '../../shared/services/userServices/resetPasswordService';
 const customNotification = require('../../utils/notification');
 
 class ForgotPass extends React.Component {
@@ -19,9 +19,17 @@ class ForgotPass extends React.Component {
 		});
 	}
 
-	ResetPass(e) {
+	async ResetPass(e) {
 		e.preventDefault();
-		if (this.validateFormData()) console.log('send email to server');
+		if (this.validateFormData()) {
+			let response = await resetPasswordService({ email: this.state.email });
+			if (response && response.code === 200)
+				customNotification.fireNotification("success", response.msg);
+			if (response && response.code === 204)
+				customNotification.fireNotification("warning", response.msg);
+			if (response && response.code === 500)
+				customNotification.fireNotification("error", response.msg);
+		}
 	}
 
 	validateFormData() {
