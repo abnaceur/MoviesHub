@@ -248,7 +248,7 @@ class MovieDetails extends React.Component {
                         <div class="box-footer box-comments col-md-12">
                           <div className="box-comment">
                             <img className="img-responsive1" src={typeof cm.userImage.name !== "string" ?
-                              cm.userImage.indexOf("https") === -1 ?
+                              cm.userImage.indexOf("https") === -1 && cm.userImage !== "undefined" && cm.userImage !== "" && cm.userImage !== undefined ?
                                 "http://localhost:3000/" + cm.userImage : cm.userImage.indexOf("https") > -1 ?
                                   cm.userImage :
                                   "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
