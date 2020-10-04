@@ -1,15 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
-const mongoose = require('mongoose');
-const multer = require('multer');
-const authCkeck = require('../middleware/check-auth');
 const moviesContraoller = require('../controllers/moviesContraoller');
 
 /*
 ** [POST] Route:"/movies/save" [USED]
 */
-router.post('/save/:userId', authCkeck, moviesContraoller.saveMovieCOntroller)
+router.post('/save/:userId', moviesContraoller.saveMovieCOntroller)
 
 /*
 ** [POST] Route:"/movies/stream/:magnet/:file_name" [USED]
