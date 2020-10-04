@@ -24,7 +24,7 @@ class Memebers extends React.Component {
 
         return (
 
-            <div className="image-flip" >>
+            <div className="image-flip">
                 {allMembers ?
                     allMembers.map((member, index) => {
                         return (
