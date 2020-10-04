@@ -20,7 +20,16 @@ client.on('error', function (err) {
 });
 
 client.on('done', function () {
-	console.log('torrent download finished')
+	console.log('torrent download finished');
+	movieSaved.compelition = 1;
+	Movie.findByIdAndUpdate(movieSaved._id,
+		movieSaved, {
+		new: true,
+	},
+		function (err, results) {
+			if (err) console.log("errot :", err);
+			console.log("Movie updated")
+		});
 })
 
 client.on('download', function (bytes) {
@@ -69,8 +78,8 @@ saveSubtitles = (subTitles, movieSaved) => {
 			movieSaved.subTitlesArr = subTitles;
 			Movie.findByIdAndUpdate(movieSaved._id,
 				movieSaved, {
-					new: true,
-				},
+				new: true,
+			},
 				function (err, results) {
 					if (err) console.log("errot :", err);
 					console.log("Movie subTitles updated")
@@ -80,15 +89,15 @@ saveSubtitles = (subTitles, movieSaved) => {
 	})
 }
 
-function updateViewsData (views, data, userId) {
+function updateViewsData(views, data, userId) {
 	return new Promise((resolve, reject) => {
 		if (views.length > 0) {
 			// if exist update date
 			views[0].dateOfLastUpdate = Date.now;
 			View.findByIdAndUpdate(views[0]._id,
 				views[0], {
-					new: false,
-				},
+				new: false,
+			},
 				function (err, results) {
 					if (err) return res.status(500).json(err);
 					console.log("|========== View updated =================|");
@@ -167,8 +176,8 @@ async function saveMovie(data, res, userId) {
 
 						Movie.findByIdAndUpdate(movieSaved._id,
 							movieSaved, {
-								new: true,
-							},
+							new: true,
+						},
 							function (err, results) {
 								if (err) console.log("errot :", err);
 								console.log("Movie url updated")
@@ -180,8 +189,8 @@ async function saveMovie(data, res, userId) {
 						movieSaved.compelition = 1;
 						Movie.findByIdAndUpdate(movieSaved._id,
 							movieSaved, {
-								new: true,
-							},
+							new: true,
+						},
 							function (err, results) {
 								if (err) console.log("errot :", err);
 								console.log("Movie updated")
@@ -204,6 +213,11 @@ async function saveMovie(data, res, userId) {
 		let magnet = `magnet:?xt=urn:btih:${data.torrents[0].hash}&dn=${data.title_long}%20%5BWEBRip%5D%20%5B${data.quality}%5D%20%5BYTS.LT%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce`;
 		//magnet:?xt=urn:btih:TORRENT_HASH&dn=Url+Encoded+Movie+Name&tr=http://track.one:1234/announce&tr=udp://track.two:80
 		console.log("magnet :", magnet)
+		try {
+			client.remove(magnet);
+			
+		} catch (err) { console.log(err) }
+
 		client.add(magnet, { path: '/usr/src/app/uploads' }, function (torrent) {
 
 			let files = [];
@@ -231,8 +245,8 @@ async function saveMovie(data, res, userId) {
 				movie[0].compelition = 1;
 				Movie.findByIdAndUpdate(movie[0]._id,
 					movie[0], {
-						new: true,
-					},
+					new: true,
+				},
 					function (err, results) {
 						if (err) console.log("errot :", err);
 						console.log("Movie updated")
@@ -333,17 +347,17 @@ async function playMovieTorrent(res, req) {
 
 function isEmpty(obj) {
 	let i = 0;
-	for(var prop in obj) {
-	  if(obj.hasOwnProperty(prop)) {
+	for (var prop in obj) {
+		if (obj.hasOwnProperty(prop)) {
 			i++;
-	  }
+		}
 	}
 	if (i !== 0)
 		return true;
-	else 
+	else
 		return false;
 }
-  
+
 
 module.exports = {
 	saveMovie,
