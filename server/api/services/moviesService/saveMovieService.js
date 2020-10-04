@@ -113,10 +113,9 @@ async function saveMovie(data, res, userId) {
 	let views = await viewExist(data.id, userId);
 	await updateViewsData(views, data, userId)
 
-	console.log("++++++++++++++++++++")
+	console.log("++++++++++++++++++++", data)
 	// check if movie exist
 	let movie = await movieExist(data.id);
-	console.log("movie :", movie)
 	if (movie.length > 0 && movie[0].compelition === 1) {
 		res.status(200).json({
 			code: 200,
@@ -129,11 +128,9 @@ async function saveMovie(data, res, userId) {
 		//save torren
 		let magnet = `magnet:?xt=urn:btih:${data.torrents[0].hash}&dn=${data.title_long}%20%5BWEBRip%5D%20%5B${data.torrents[0].quality}%5D%20%5BYTS.LT%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce`;
 
-		console.log("magnet :", magnet);
 		let newMovie = new Movie(await movieClass.saveMovieMockup(data, magnet))
 		newMovie.save()
 			.then(async movieSaved => {
-				//Use imdb_code to download subtitles
 				let subTitles = await yifysubtitles(movieSaved.imdb_code, { path: '/usr/src/app/uploads', langs: ['en', 'fr', 'ar', 'zh', 'it', 'ru', 'es', 'uk'] });
 				console.log("subTitles :", subTitles);
 				await saveSubtitles(subTitles, movieSaved);
@@ -178,7 +175,7 @@ async function saveMovie(data, res, userId) {
 							});
 					}
 
-					client.on('do	ne', function () {
+					client.on('done', function () {
 						console.log('torrent download finished')
 						movieSaved.compelition = 1;
 						Movie.findByIdAndUpdate(movieSaved._id,
