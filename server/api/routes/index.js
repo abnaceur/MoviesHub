@@ -23,8 +23,8 @@ router.get('/', function (req, res, next) {
 
 // Googe Oauth2
 passport.use(new GoogleStrategy({
-  clientID: '126083549317-qp9hldsum65vt2f62beb62dvudteauh5.apps.googleusercontent.com',
-  clientSecret: 'eaAoheM6TzV-QLvKJuVKKXeu',
+  clientID: '393906309113-lf7gnp6pkk65bjeelg0rh90rqulqb574.apps.googleusercontent.com',
+  clientSecret: 'QT3XCRQLbRADLQbFuZPD0NL6',
   callbackURL: '/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
   done(null, profile);
