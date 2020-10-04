@@ -273,7 +273,7 @@ class MovieDetails extends React.Component {
                   <div className="box-footer col-md-12">
                     <form>
                       <div style={{ paddingTop: '30px', paddingBottom: '150px' }} className="img-push">
-                        <textarea col="10" row="22" type="text" className="form-control input-sm" name="commentContent" onChange={this.handleFormSubmit} placeholder="Press enter to post comment" />
+                        <textarea col="10" row="22" type="text" className="form-control input-sm" name="commentContent" onChange={this.handleFormSubmit} placeholder="Type your comment here" />
                         <button onClick={(e) => { this.handleCommentSave(e) }} style={{ 'marginTop': '20px' }} className="pull-right btn btn-primary">Send</button>
                       </div>
                     </form>
