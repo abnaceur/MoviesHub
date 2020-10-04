@@ -46,9 +46,9 @@ class Memebers extends React.Component {
                                         <li className="list-inline-item">
                                             {member.pseudonyme}
                                         </li>
-                                        <li className="list-inline-item">
+                                        {/* <li className="list-inline-item">
                                             {member.dateOfCreation}
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                             </div>

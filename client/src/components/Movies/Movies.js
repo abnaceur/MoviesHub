@@ -82,10 +82,15 @@ class Movies extends React.Component {
         switch (target.name) {
             case 'selectedCategory':
                 query = this.state.query.replace(/&genre=[^&]+/g, '') + `&genre=${value}`;
+                query = query.replace(/&order_by=[^&]+/g, '') + `&order_by=asc`;
+                query = query.replace(/&sort_by=[^&]+/g, '') + `&sort_by=title`;
+              
                 this.setState({
-                    query: query
+                    query: query,
+                    order_by: "asc",
+                    sort_by: "title"
                 })
-                setTimeout(async () => {
+               setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
 
@@ -93,8 +98,13 @@ class Movies extends React.Component {
                 break;
             case 'ratingMin':
                 query = this.state.query.replace(/&minimum_rating=[^&]+/g, '') + `&minimum_rating=${value}`;
+                query = query.replace(/&order_by=[^&]+/g, '') + `&order_by=asc`;
+                query = query.replace(/&sort_by=[^&]+/g, '') + `&sort_by=title`;
+              
                 this.setState({
-                    query: query
+                    query: query,
+                    order_by: "asc",
+                    sort_by: "title"
                 })
                 setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
@@ -104,8 +114,10 @@ class Movies extends React.Component {
                 break;
             case 'query_term':
                 query = this.state.query.replace(/&query_term=[^&]+/g, '') + `&query_term=${this.state.query_term}`;
+                query = query.replace(/&order_by=[^&]+/g, '') + `&order_by=asc`;
                 this.setState({
-                    query: query
+                    query: query,
+                    order_by: "asc"
                 })
                 setTimeout(async () => {
                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
@@ -146,7 +158,16 @@ class Movies extends React.Component {
                     })
                 }
                 setTimeout(async () => {
-                    allMoviesByRatings = await getMoviesByRatings(this.state.query, this.state.pageMovie, this.state.decadeFilter);
+                    query = this.state.query.replace(/&order_by=[^&]+/g, '') + `&order_by=asc`;
+                    query = query.replace(/&sort_by=[^&]+/g, '') + `&sort_by=title`;
+                  
+                    this.setState({
+                        query: query,
+                        order_by: "asc",
+                        sort_by: "title"
+                    })
+                 
+                    allMoviesByRatings = await getMoviesByRatings(query, this.state.pageMovie, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
                 }, 20);
                 break;

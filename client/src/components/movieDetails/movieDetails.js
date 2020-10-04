@@ -192,7 +192,8 @@ class MovieDetails extends React.Component {
                     <b>Rating :</b>
                     {this.state.materialDetails.rating}
                     <br></br>
-                    <b>Year :</b>{" "} {this.state.materialDetails.year}
+                    <b>Year :</b>{" "} {this.state.materialDetails.year} <br></br>
+                    <b>Runtime :</b>{" "} {this.state.materialDetails.runtime} minutes
                   </div>
 
                   <div className="textbox">
@@ -251,7 +252,7 @@ class MovieDetails extends React.Component {
                           <div className="box-comment">
                             <img className="img-responsive1" src={typeof cm.userImage.name !== "string" ?
                               cm.userImage.indexOf("https") === -1 && cm.userImage !== "undefined" && cm.userImage !== "" && cm.userImage !== undefined ?
-                                "http://localhost:3000/" + cm.userImage : cm.userImage.indexOf("https") > -1 ?
+                              process.env.REACT_APP_URL + "/" + cm.userImage : cm.userImage.indexOf("https") > -1 ?
                                   cm.userImage :
                                   "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
                               : null}

@@ -29,7 +29,7 @@ const NavLinks = (props) => {
               className="image_profil"
               src={typeof imgProfil.name !== "string" ?
                   imgProfil.indexOf("https") === -1 && imgProfil !== "" && imgProfil !== undefined && imgProfil !== "undefined" ?
-                    "http://localhost:3000/" + imgProfil : imgProfil.indexOf("https") > -1 ?
+                  process.env.REACT_APP_URL + "/" + imgProfil : imgProfil.indexOf("https") > -1 ?
                       imgProfil :
                       "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
                   : null}
