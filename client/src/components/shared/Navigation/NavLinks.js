@@ -18,6 +18,11 @@ const NavLinks = (props) => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/members">
+              <Icon className="navBouton">person</Icon>
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/profil">
               {/* <Icon className="navBouton">account_circle</Icon> */}
               <img

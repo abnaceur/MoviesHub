@@ -162,3 +162,19 @@ button:hover {
 }
 
 
+.image-flip {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-members {
+  margin-top: 150px;
+  position: relative;
+  width: 20%;
+}
+
+.img-fluid { 
+  width: 150px;
+  border-radius: 50px;
+}

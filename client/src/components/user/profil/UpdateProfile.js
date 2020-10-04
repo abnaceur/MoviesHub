@@ -75,8 +75,12 @@ class UpdateProfile extends React.Component {
   valdateFormData() {
     let validateEmail = new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g);
     const testedResult = zxcvbn(this.state.password);
+    const { lastname, firstname, email, profileImg, username, password } = this.state;
 
-    if (this.state.password.length < 8 && this.state.password !== "") {
+    if (email === "" || firstname === "" || username === "" || lastname === "") {
+      customNotification.fireNotification("warning", "Fields must not be empty")
+      return false;
+    } else if (this.state.password.length < 8 && this.state.password !== "") {
       customNotification.fireNotification("warning", "Password must contain at least 8 characters")
       return false;
     } else if (parseInt(testedResult.score) < 3 && this.state.password !== "") {
@@ -185,10 +189,11 @@ class UpdateProfile extends React.Component {
             <input
               id="password"
               value={password}
-              type="text"
+              type="password"
               name="password"
               label="password"
               onChange={this.handleChange}
+              placeholder="Leave password empty if you don't want to modify"
               required={true}
             />
             <PasswordStrengthMeter password={password} />

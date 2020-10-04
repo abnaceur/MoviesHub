@@ -395,9 +395,9 @@ class Movies extends React.Component {
                                                                 <h3 style={{ margin: "0 0" }}>{movie.title}</h3>
                                                                 <h5><b>Rating : </b>{movie.rating}</h5>
                                                                 <h5><b>Year : </b>{movie.year}</h5>
-                                                                <div style={{ 'whiteSpace': 'nowrap', 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}>
+                                                                {/* <div style={{ 'whiteSpace': 'nowrap', 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}>
                                                                     {parse(movie.summary)}
-                                                                </div>
+                                                                </div> */}
                                                                 <br></br>
                                                                 <Link to="/videodetails" >
                                                                     <button type="button" onClick={(e) => { this.goToMovieDatails(e, movie) }} className="btn-card" style={{ fontSize: "12px", fontWeight: "bold" }}>See more</button>

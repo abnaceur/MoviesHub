@@ -10,6 +10,7 @@ import UpdateProfile from "./components/user/profil/UpdateProfile";
 import MovieDetails from "./components/movieDetails/movieDetails";
 import AuthRoute from "./components/midlleware/RouteAuth";
 import Logout from "./components/Logout/Logout";
+import Members from './components/Members/Members';
 
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -32,6 +33,7 @@ const App = () => {
           <Route exact path="/unknowPassword" component={UnknowPassword} />
           <Route exact path="/resetPassword" component={ResetPassword} />
           <AuthRoute exact path="/videodetails" component={MovieDetails} />
+          <AuthRoute exact path="/members" component={Members} />
           <AuthRoute exact path="/profil" component={UpdateProfile} />
           <AuthRoute exact path="/logout" component={Logout} />
           <Redirect to="/" />

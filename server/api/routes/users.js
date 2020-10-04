@@ -27,6 +27,12 @@ router.get('/:id', userController.getUserInformation);
 /*
 ** [PUT] Route:"/users/profile" [USED]
 */
-router.put('/profile', upload.any(), authCkeck, userController.updateUserProfile)
+router.put('/profile', upload.any(), userController.updateUserProfile)
+
+
+/*
+** [GET] Route:"/users/all/:page" [USED]
+*/
+router.get('/all/members', userController.getAllusers);
 
 module.exports = router;
