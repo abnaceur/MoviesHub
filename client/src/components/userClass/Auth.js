@@ -218,7 +218,7 @@ class Auth extends React.Component {
                   id="Password"
                   placeholder="Password"
                   element="input"
-                  type="text"
+                  type="password"
                   label="password"
                   name="password"
                   onChange={this.handleChange}
@@ -227,7 +227,7 @@ class Auth extends React.Component {
                   id="Password"
                   placeholder="Confirm password"
                   element="input"
-                  type="text"
+                  type="password"
                   label="Confirm password"
                   name="confPassword"
                   onChange={this.handleChange}

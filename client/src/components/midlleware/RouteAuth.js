@@ -6,7 +6,7 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-
+const createHistory = require("history").createBrowserHistory;
 
  const checkAuth = () => { 
     const token = localStorage.getItem('token');
@@ -19,10 +19,21 @@ import {
       const { exp } = decode(token);
 
       if (exp < new Date().getTime() / 1000) {
+        alert("Token expired !")
+        localStorage.setItem('token', "");
+        localStorage.setItem('userId', "");
+        localStorage.setItem('familyName', "");
+        localStorage.setItem('givenName', "");
+        localStorage.setItem('imageUrl', "");
+        let history = createHistory();
+        history.push("/");
+        let pathUrl = window.location.href;
+        window.location.href = pathUrl;   
         return false;
       }
 
     } catch (e) {
+      alert("dccc")
       return false;
     }
 

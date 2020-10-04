@@ -11,7 +11,7 @@ class Logout extends React.Component {
         localStorage.setItem('givenName', "");
         localStorage.setItem('imageUrl', "");
         let history = createHistory();
-        history.push("/login");
+        history.push("/");
         let pathUrl = window.location.href;
         window.location.href = pathUrl;   
        

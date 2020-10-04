@@ -33,7 +33,7 @@ const App = () => {
           <Route exact path="/resetPassword" component={ResetPassword} />
           <AuthRoute exact path="/videodetails" component={MovieDetails} />
           <AuthRoute exact path="/profil" component={UpdateProfile} />
-          <Route exact path="/logout" component={Logout} />
+          <AuthRoute exact path="/logout" component={Logout} />
           <Redirect to="/" />
         </Switch>
         <Footer />
