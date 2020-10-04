@@ -141,7 +141,7 @@ class MovieDetails extends React.Component {
 
       return <div className="vd-player">
         <ReactPlayer
-          url={['http://ec2-18-217-19-242.us-east-2.compute.amazonaws.com:3000/api/v1/movies/stream/' + this.state.videoUrlLink]}
+          url={['http://localhost:3000/api/v1/movies/stream/' + this.state.videoUrlLink]}
           className='react-player'
           controls
           width='80%'

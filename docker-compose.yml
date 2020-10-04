@@ -26,7 +26,7 @@ services:
   client_dev:
     image: node:latest
     container_name: hpt_client_dev
-    command: npm run start-deploy
+    command: npm start
     volumes:
       - ./client/:/home/node/app
     working_dir: /home/node/app
