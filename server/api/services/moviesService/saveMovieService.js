@@ -336,7 +336,8 @@ async function playMovieTorrent(res, req) {
 			let stream = file.createReadStream(stream_position)
 			stream.pipe(res);
 			stream.on("error", function (err) {
-				return next(err);
+				console.log("error :", err);
+				return;
 			});
 		}
 
