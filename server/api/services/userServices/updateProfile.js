@@ -55,7 +55,9 @@ async function updateProfile(req, res) {
                     res.status(200).json({
                         code: 200,
                         msg: "Profile Updated with success",
-                        imageUrl:  user[0].imageUrl
+                        imageUrl:  user[0].imageUrl,
+                        givenName: user[0].givenName,
+                        familyName: user[0].familyName
                     })
                 })
         }

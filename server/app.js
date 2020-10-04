@@ -97,7 +97,6 @@ app.use(function (err, req, res, next) {
 	res.send('error ' + err);
 });
 
-
 // Schedule corn like tab
 // [ENCH MINUT FOR TEST] var j = schedule.scheduleJob('* * * * *', function () {
 var j = schedule.scheduleJob('* * 1 * *', function () {

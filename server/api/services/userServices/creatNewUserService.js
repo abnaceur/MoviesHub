@@ -10,7 +10,6 @@ function userExist(email, pseudonyme) {
                 User.find(
                     { 'pseudonyme': pseudonyme }
                 ).then(user => {
-                    console.log("usr1 :", user)
                     user.length === 0 ?
                         resolve(false) : resolve(true);
                 })} else resolve(true)

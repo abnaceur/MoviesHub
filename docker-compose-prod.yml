@@ -29,4 +29,4 @@ services:
     working_dir: /home/node/app
     command: npm run start-deploy
     ports:
-        - "80:5000"
+        - "5000:5000"

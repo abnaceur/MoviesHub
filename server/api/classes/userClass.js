@@ -48,10 +48,11 @@ creatNewOauth2UserVia42 = (userInfo) => {
             email: userInfo.emails[0].value,
             name: userInfo.displayName,
             password: await getHashPwd(),
+             pseudonyme: userInfo.username,
             givenName: userInfo.name.givenName,
             familyName: userInfo.name.familyName,
         })
-    });
+    }); 
 }
 
 creatNewOauth2User = (userInfo) => {

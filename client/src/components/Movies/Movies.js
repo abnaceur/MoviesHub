@@ -1,11 +1,9 @@
-
 import React from "react";
 import parse from 'html-react-parser';
 import { Link } from "react-router-dom";
 import { getMoviesByRatings } from '../shared/services/moviesServices/getMoviesByRatingAction';
 import { getMovieViewsByUser } from '../shared/services/moviesServices/getMovieViewbyUserAction';
 import { getMoviesFromSource } from '../shared/services/moviesServices/getMultiSourceMoviesAction';
-// import { getFilteredMovies } from '../../../store/actions/materialAction/filterMaterialByCategoryAction';
 
 const categories = require('./genre');
 const genres = categories.data;
@@ -110,7 +108,7 @@ class Movies extends React.Component {
                     query: query
                 })
                 setTimeout(async () => {
-                     allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
+                    allMoviesByRatings = await getMoviesByRatings(query, 1, this.state.decadeFilter);
                     this.getAllMoviesSetup(allMoviesByRatings)
 
                 }, 20);
@@ -257,15 +255,6 @@ class Movies extends React.Component {
             })
         }
 
-        // if (this.state.selectedCategory !== "")
-        //     this.setState({
-        //         allMaterials: filteredMaterials
-        //     })
-        // else
-        //     this.setState({
-        //         allMaterials: allMaterials
-        //     })
-
         this.setState({ onLoading: "" })
 
     }
@@ -282,8 +271,8 @@ class Movies extends React.Component {
         }
 
         if (check === 1)
-            return <span 
-            class="badge badge-info"> Viewed</span>
+            return <span
+                class="badge badge-info"> Viewed</span>
     }
 
     render() {
@@ -393,7 +382,6 @@ class Movies extends React.Component {
                                         </form>
                                         <br></br>
 
-
                                         <div className="movies-list">
                                             {this.state.allMovies && this.state.allMovies.length > 0 ? this.state.allMovies.map(movie => {
                                                 return (
@@ -406,6 +394,7 @@ class Movies extends React.Component {
                                                             <div className="card-desc" style={{ overflowWrap: 'break-word' }}>
                                                                 <h3 style={{ margin: "0 0" }}>{movie.title}</h3>
                                                                 <h5><b>Rating : </b>{movie.rating}</h5>
+                                                                <h5><b>Year : </b>{movie.year}</h5>
                                                                 <div style={{ 'whiteSpace': 'nowrap', 'overflow': 'hidden', 'textOverflow': 'ellipsis' }}>
                                                                     {parse(movie.summary)}
                                                                 </div>

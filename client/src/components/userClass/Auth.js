@@ -1,5 +1,4 @@
-import React, { useState, Button } from "react";
-import LogoFacebook from '../../assets/logo/Logo-Facebook-rond.png';
+import React from "react";
 import LogoGmail from '../../assets/logo/gmail.png';
 import Logo42 from "../../assets/logo/logo_42.jpg";
 import LeftArrow from "../../assets/logo/left-arrow.png";
@@ -215,7 +214,7 @@ class Auth extends React.Component {
                 />
 
                 <input
-                  id="Password"
+                  id="Password1"
                   placeholder="Password"
                   element="input"
                   type="password"
@@ -224,7 +223,7 @@ class Auth extends React.Component {
                   onChange={this.handleChange}
                 />
                 <input
-                  id="Password"
+                  id="Password2"
                   placeholder="Confirm password"
                   element="input"
                   type="password"

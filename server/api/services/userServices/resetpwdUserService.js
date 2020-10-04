@@ -54,7 +54,6 @@ async function resetpwd(data, res) {
             msg: "Initialization email has been sent",
             code: 200
         })
-        // return error
     } else {
         res.status(200).json({
             msg: "Email and/or account does not exist !",

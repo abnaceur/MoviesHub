@@ -7,7 +7,7 @@ const NavLinks = (props) => {
   let token = localStorage.getItem("token");
   let imgProfil = localStorage.getItem('imageUrl');
 
-  console.log("imgProfil :", imgProfil);
+
   return (
     <>
       {token ?
