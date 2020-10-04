@@ -123,12 +123,10 @@ class UpdateProfile extends React.Component {
                 className="image_avatar"
                 src={typeof profileImg.name !== "string" ?
                   profileImg.indexOf("https") === -1 ?
-                    "http://localhost:3000/" + profileImg : profileImg.indexOf("https") > 1 ?
+                    "http://localhost:3000/" + profileImg : profileImg.indexOf("https") > -1 ?
                       profileImg :
                       "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"
                   : null}
-                // : profileImg !== undefined && profileImg !== "" && profileImg.indexOf("https") > -1 ?
-                // profileImg : "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs2/112692698/original/31a5d2469689575beee06ffcf4e9e76abab3abe2/logo-design-for-profile-picture-dessin-pour-photo-de-profil.png"}
                 alt="Profile"
               />
               <div>
