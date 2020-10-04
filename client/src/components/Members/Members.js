@@ -40,9 +40,9 @@ class Memebers extends React.Component {
                                         alt="card" /></p>
                                     <h4 className="card-title">{member.givenName} {member.familyName}</h4>
                                     <ul className="list-inline">
-                                        <li className="list-inline-item">
+                                        {/* <li className="list-inline-item">
                                             {member.email}
-                                        </li>
+                                        </li> */}
                                         <li className="list-inline-item">
                                             {member.pseudonyme}
                                         </li>
