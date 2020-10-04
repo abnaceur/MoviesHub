@@ -161,14 +161,14 @@ class Auth extends React.Component {
               <form onSubmit={this.handlFormSubmit} encType="multipart/form-data">
                 <h1>Create User</h1>
                 <div className="social-container">
-                  <a href="http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com:3000/auth/google"  className="social">
+                  <a href="http://ec2-18-217-19-242.us-east-2.compute.amazonaws.com:3000/auth/google"  className="social">
                     <img
                       src={LogoGmail}
                       className="icon"
                       alt="login with facebook"
                     />
                   </a>
-                  <a href="http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com:3000/login/42" className="social">
+                  <a href="http://ec2-18-217-19-242.us-east-2.compute.amazonaws.com:3000/login/42" className="social">
                     <img
                       src={Logo42}
                       className="icon"
@@ -239,14 +239,14 @@ class Auth extends React.Component {
               <form onSubmit={this.handlFormSubmit} encType="multipart/form-data">
                 <h1>Sign in</h1>
                 <div className="social-container">
-                  <a href="http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com:3000/auth/google"  className="social">
+                  <a href="http://ec2-18-217-19-242.us-east-2.compute.amazonaws.com:3000/auth/google"  className="social">
                     <img
                       src={LogoGmail}
                       className="icon"
                       alt="login with facebook"
                     />
                   </a>
-                  <a href="http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com:3000/login/42" className="social">
+                  <a href="http://ec2-18-217-19-242.us-east-2.compute.amazonaws.com:3000/login/42" className="social">
                     <img
                       src={Logo42}
                       className="icon"
