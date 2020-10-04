@@ -127,7 +127,7 @@ class MovieDetails extends React.Component {
           label: arr[i].lang,
           kind: 'subtitles',
           srclang: arr[i].langShort,
-          src: "http://ec2-18-217-19-242.us-east-2.compute.amazonaws.com:3000/" + arr[i].path.substr(13, arr[i].path.length)
+          src: process.env.REACT_APP_URL + "/" + arr[i].path.substr(13, arr[i].path.length)
         })
         i++;
       }
@@ -141,7 +141,7 @@ class MovieDetails extends React.Component {
 
       return <div className="vd-player">
         <ReactPlayer
-          url={['http://ec2-18-217-19-242.us-east-2.compute.amazonaws.com:3000/api/v1/movies/stream/' + this.state.videoUrlLink]}
+          url={[process.env.REACT_APP_URL + '/api/v1/movies/stream/' + this.state.videoUrlLink]}
           className='react-player'
           controls
           width='80%'
