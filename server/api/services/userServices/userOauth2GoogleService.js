@@ -20,7 +20,7 @@ async function loginOauth2User(res, userInfo) {
                         const accessTokenValue = await accessTokenDao.saveTokenAndGetAccessToken(token, usr._id);
                         const basedAccesstoken = await accessTokenDao.generateToken(accessTokenValue, usr._id);
 
-                        res.redirect("http://ec2-3-133-136-167.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
+                        res.redirect("http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
                             "&userId=" + usr._id + "&imageUrl=" + usr.imageUrl + "&givenName=" +
                             usr.givenName + "&familyName=" + usr.familyName + "&dateOfCreation=" + usr.dateOfCreation);
                     })
@@ -31,7 +31,7 @@ async function loginOauth2User(res, userInfo) {
                 const accessTokenValue = await accessTokenDao.saveTokenAndGetAccessToken(token, usrOne[0]._id);
                 const basedAccesstoken = await accessTokenDao.generateToken(accessTokenValue, usrOne[0]._id);
 
-                res.redirect("http://ec2-3-133-136-167.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
+                res.redirect("http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
                     "&userId=" + usrOne[0]._id + "&imageUrl=" + usrOne[0].imageUrl + "&givenName=" +
                     usrOne[0].givenName + "&familyName=" + usrOne[0].familyName + "&dateOfCreation=" + usrOne[0].dateOfCreation);
             }
@@ -56,7 +56,7 @@ async function loginOauth2UserVia42(res, userInfo) {
                         const accessTokenValue = await accessTokenDao.saveTokenAndGetAccessToken(token, usr._id);
                         const basedAccesstoken = await accessTokenDao.generateToken(accessTokenValue, usr._id);
 
-                        res.redirect("http://ec2-3-133-136-167.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
+                        res.redirect("http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
                             "&userId=" + usr._id + "&imageUrl=" + usr.imageUrl + "&givenName=" +
                             usr.givenName + "&familyName=" + usr.familyName + "&dateOfCreation=" + usr.dateOfCreation);
                     })
@@ -67,7 +67,7 @@ async function loginOauth2UserVia42(res, userInfo) {
                 const accessTokenValue = await accessTokenDao.saveTokenAndGetAccessToken(token, usrOne[0]._id);
                 const basedAccesstoken = await accessTokenDao.generateToken(accessTokenValue, usrOne[0]._id);
 
-                res.redirect("http://ec2-3-133-136-167.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
+                res.redirect("http://ec2-3-15-220-213.us-east-2.compute.amazonaws.com?token=" + basedAccesstoken +
                     "&userId=" + usrOne[0]._id + "&imageUrl=" + usrOne[0].imageUrl + "&givenName=" +
                     usrOne[0].givenName + "&familyName=" + usrOne[0].familyName + "&dateOfCreation=" + usrOne[0].dateOfCreation);
             }
