@@ -380,7 +380,7 @@ class Movies extends React.Component {
 
                                             <div className="sort-movies">
                                                 <div className="form-group margin">
-                                                    <label style={{ marginRight: "15px" }} >Title alphabetical</label>
+                                                    <label style={{ marginRight: "15px" }} >Alphabetically</label>
                                                     <input type="radio" name="sort_by" onChange={this.handleChangeFilterCat} value="title" checked={this.state.sort_by === 'title'}></input>
                                                 </div>
                                                 <div className="form-group margin">

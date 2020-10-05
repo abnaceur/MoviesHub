@@ -77,10 +77,7 @@ class MovieDetails extends React.Component {
 
     videos = JSON.parse(localStorage.getItem("moviedetails"));
 
-    console.log("videos :", videos);
-    
     if (videos.url !== undefined) {
-      //saveMovieDetails(videos);
       this.setState({
         materialDetails: videos
       })

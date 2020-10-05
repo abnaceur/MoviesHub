@@ -33,9 +33,11 @@ async function updateProfile(req, res) {
                 user[0].password = newPwd;
             }
 
-            if (user[0].pseudonyme === req.body.pseudonyme &&
+            if (user[0].pseudonyme === req.body.pseudonyme ||
                 user[0].email === req.body.email) {
+                user[0].pseudonyme = req.body.pseudonyme;
                 user[0].imageUrl = req.files.length > 0 ? req.files[0].path : user[0].imageUrl;
+                user[0].email = req.body.email;
                 user[0].name = req.body.firstname + " " + req.body.lastname;
                 user[0].givenName = req.body.firstname;
                 user[0].familyName = req.body.lastname;

@@ -56,7 +56,6 @@ const Auth = () => {
   };
   // TODO REFACTOR SERVICES OUT OF COMPOENENT LOGIC
   const fetchUser = async () => {
-    console.log("ok", formState.inputs.username);
     let data = {
       username: formState.inputs.username.value,
       firstname: formState.inputs.firstname.value,
