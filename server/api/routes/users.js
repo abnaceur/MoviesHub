@@ -29,7 +29,6 @@ router.get('/:id', userController.getUserInformation);
 */
 router.put('/profile', upload.any(), userController.updateUserProfile)
 
-
 /*
 ** [GET] Route:"/users/all/:page" [USED]
 */
