@@ -52,7 +52,7 @@ async function updateProfile(req, res) {
         if (user.lenght === 0)
             console.log("updateProfile ERR");
         else {
-            let checker = true;
+            let checker = false;
             if (req.body.password !== "") {
                 let newPwd = await hashPwd.hashPassword(req.body.password);
                 user[0].password = newPwd;
