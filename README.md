@@ -6,13 +6,13 @@ HYPERTUBE is a plateform for video streaming.
 
 ## Screenshots
 
-![](:https://github.com/abnaceur/MoviesHub/blob/develop/docs/video.gif?raw=true)
+![](https://github.com/abnaceur/MoviesHub/blob/develop/docs/video.gif?raw=true)
 
-![](:https://github.com/abnaceur/MoviesHub/blob/develop/docs/Movies1.png?raw=true)
+![](https://github.com/abnaceur/MoviesHub/blob/develop/docs/Movies1.png?raw=true)
 
-![](:https://github.com/abnaceur/MoviesHub/blob/develop/docs/2.png?raw=true)
+![](https://github.com/abnaceur/MoviesHub/blob/develop/docs/2.png?raw=true)
 
-![](:https://github.com/abnaceur/MoviesHub/blob/develop/docs/3.png?raw=true)
+![](https://github.com/abnaceur/MoviesHub/blob/develop/docs/3.png?raw=true)
 
 
 ## Team
